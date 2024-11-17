@@ -3,8 +3,11 @@ import SwiftUI
 @main
 struct PulseApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra {
+            RightClickMenuView()
+        } label: {
+            // TODO:
+            Image(systemName: "leaf")
         }
     }
 }
