@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = AD5C7B662CE9D97C007D5B2C /* Apollo */; };
 		AD6515432CE9C73600BCC336 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515422CE9C73600BCC336 /* Valet */; };
 		AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */; };
 		AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515482CE9C76000BCC336 /* AsyncAlgorithms */; };
@@ -30,6 +31,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */,
+				AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */,
 				AD6515432CE9C73600BCC336 /* Valet in Frameworks */,
 				AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */,
 			);
@@ -42,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				AD1FD5322CE9BF0100508A20 /* Pulse */,
+				AD5C7B652CE9D97C007D5B2C /* Frameworks */,
 				AD1FD5312CE9BF0100508A20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +55,13 @@
 				AD1FD5302CE9BF0100508A20 /* Pulse.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AD5C7B652CE9D97C007D5B2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +88,7 @@
 				AD6515422CE9C73600BCC336 /* Valet */,
 				AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */,
 				AD6515482CE9C76000BCC336 /* AsyncAlgorithms */,
+				AD5C7B662CE9D97C007D5B2C /* Apollo */,
 			);
 			productName = Pulse;
 			productReference = AD1FD5302CE9BF0100508A20 /* Pulse.app */;
@@ -403,6 +414,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AD5C7B662CE9D97C007D5B2C /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
 		AD6515422CE9C73600BCC336 /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */;
