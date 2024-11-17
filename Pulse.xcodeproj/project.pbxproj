@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AD6515432CE9C73600BCC336 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515422CE9C73600BCC336 /* Valet */; };
+		AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */; };
+		AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515482CE9C76000BCC336 /* AsyncAlgorithms */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AD1FD5302CE9BF0100508A20 /* Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */,
+				AD6515432CE9C73600BCC336 /* Valet in Frameworks */,
+				AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +75,9 @@
 			);
 			name = Pulse;
 			packageProductDependencies = (
+				AD6515422CE9C73600BCC336 /* Valet */,
+				AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */,
+				AD6515482CE9C76000BCC336 /* AsyncAlgorithms */,
 			);
 			productName = Pulse;
 			productReference = AD1FD5302CE9BF0100508A20 /* Pulse.app */;
@@ -95,6 +107,12 @@
 			);
 			mainGroup = AD1FD5272CE9BF0100508A20;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */,
+				AD6515442CE9C75100BCC336 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD1FD5312CE9BF0100508A20 /* Products */;
 			projectDirPath = "";
@@ -348,6 +366,59 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
+			};
+		};
+		AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/square/Valet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		AD6515442CE9C75100BCC336 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.3;
+			};
+		};
+		AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-async-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD6515422CE9C73600BCC336 /* Valet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */;
+			productName = Valet;
+		};
+		AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD6515442CE9C75100BCC336 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
+		};
+		AD6515482CE9C76000BCC336 /* AsyncAlgorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
+			productName = AsyncAlgorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD1FD5282CE9BF0100508A20 /* Project object */;
 }
