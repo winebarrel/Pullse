@@ -30,7 +30,7 @@ struct PulseApp: App {
             RightClickMenuView()
         } label: {
             // TODO:
-            Image(systemName: "leaf")
+            Image("check.black")
         }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
             if !initialized {
                 initialize()
