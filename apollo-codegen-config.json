@@ -1,0 +1,27 @@
+{
+  "schemaNamespace": "Github",
+  "input": {
+    "operationSearchPaths": [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths": [
+      "**/*.graphqls"
+    ]
+  },
+  "output": {
+    "testMocks": {
+      "none": {}
+    },
+    "schemaTypes": {
+      "path": "Pulse/Github",
+      "moduleType": {
+        "embeddedInTarget": {
+          "name": "Pulse"
+        }
+      }
+    },
+    "operations": {
+      "inSchemaModule": {}
+    }
+  }
+}

@@ -27,3 +27,7 @@ clean:
 .PHONY: schema
 schema:
 	curl -sSfLo Pulse/Github/schema.graphqls https://docs.github.com/public/fpt/schema.docs.graphql
+
+.PHONY: generate
+generate:
+	./apollo-ios-cli generate

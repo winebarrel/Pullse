@@ -1,0 +1,40 @@
+query SearchPullRequests($query: String!) {
+  search(type: ISSUE, last: 100, query: $query) {
+    nodes {
+      ... on PullRequest {
+        repository {
+          name
+          owner {
+            login
+          }
+        }
+        title
+        url
+        reviewDecision
+        mergeable
+        isDraft
+        comments(last: 1) {
+          nodes {
+            author {
+              login
+            }
+            bodyText
+          }
+        }
+        commits(last: 1) {
+          nodes {
+            commit {
+              url
+              statusCheckRollup {
+                state
+              }
+            }
+          }
+        }
+        reviews(states: APPROVED) {
+          totalCount
+        }
+      }
+    }
+  }
+}
