@@ -6,7 +6,7 @@ struct PullRequest: Identifiable {
     let repo: String
     let title: String
     let url: String
-    let mergeable: String
+    let mergeable: Github.MergeableState // NOTE: It might use
     let commitUrl: String
     let comment: String?
     let commentAuthor: String?
@@ -111,7 +111,7 @@ struct PullRequestAPI {
                                 repo: asPull.repository.name,
                                 title: asPull.title,
                                 url: asPull.url,
-                                mergeable: asPull.mergeable.rawValue,
+                                mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
                                 commitUrl: commit.url,
                                 comment: asPull.comments.nodes?.first??.bodyText,
                                 commentAuthor: asPull.comments.nodes?.first??.author?.login,
