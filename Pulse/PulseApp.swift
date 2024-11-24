@@ -24,7 +24,7 @@ struct PulseApp: App {
         // TODO:
         // Notification.initialize()
 
-        let contentView = ContentView()
+        let contentView = ContentView(pullRequest: pullRequest)
         popover.contentViewController = NSHostingController(rootView: contentView)
 
         scheduleUpdate()
