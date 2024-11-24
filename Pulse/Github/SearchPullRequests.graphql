@@ -19,7 +19,6 @@ query SearchPullRequests($query: String!) {
             author {
               login
             }
-            bodyText
           }
         }
         commits(last: 1) {
