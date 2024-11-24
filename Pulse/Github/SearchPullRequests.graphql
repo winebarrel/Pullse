@@ -13,6 +13,7 @@ query SearchPullRequests($query: String!) {
         reviewDecision
         mergeable
         isDraft
+        updatedAt
         comments(last: 1) {
           nodes {
             author {
