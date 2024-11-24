@@ -8,7 +8,7 @@ extension Github {
     static let operationName: String = "SearchPullRequests"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename nodes { __typename author { __typename login } bodyText } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } reviews(states: APPROVED) { __typename totalCount } } } } }"#
+        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename nodes { __typename author { __typename login } } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } reviews(states: APPROVED) { __typename totalCount } } } } }"#
       ))
 
     public var query: String
@@ -173,13 +173,10 @@ extension Github {
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
                   .field("author", Author?.self),
-                  .field("bodyText", String.self),
                 ] }
 
                 /// The actor who authored the comment.
                 var author: Author? { __data["author"] }
-                /// The body rendered to text.
-                var bodyText: String { __data["bodyText"] }
 
                 /// Search.Node.AsPullRequest.Comments.Node.Author
                 ///

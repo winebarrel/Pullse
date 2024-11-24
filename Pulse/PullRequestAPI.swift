@@ -8,7 +8,6 @@ struct PullRequest: Identifiable {
     let url: String
     let mergeable: Github.MergeableState // NOTE: It might use
     let commitUrl: String
-    let comment: String?
     let commentAuthor: String?
     let draft: Bool
     let approvedCount: Int
@@ -114,7 +113,6 @@ struct PullRequestAPI {
                                 url: asPull.url,
                                 mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
                                 commitUrl: commit.url,
-                                comment: asPull.comments.nodes?.first??.bodyText,
                                 commentAuthor: asPull.comments.nodes?.first??.author?.login,
                                 draft: asPull.isDraft,
                                 approvedCount: asPull.reviews?.totalCount ?? 0,
