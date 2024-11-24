@@ -1,3 +1,4 @@
+import AsyncAlgorithms
 import MenuBarExtraAccess
 import SwiftUI
 
@@ -5,7 +6,11 @@ import SwiftUI
 struct PulseApp: App {
     @State private var initialized = false
     @State private var isMenuPresented = false
+    @State private var timer: Task<Void, Never>?
+    // NOTE: Define "githubToken" in PulseApp so that values are not lost during sleep.
     @State private var githubToken = Vault.githubToken
+    @AppStorage("interval") private var interval = Constants.defaultInterval
+    @StateObject private var pullRequest = PullRequestModel()
 
     private var popover: NSPopover = {
         let pop = NSPopover()
@@ -22,8 +27,25 @@ struct PulseApp: App {
         let contentView = ContentView()
         popover.contentViewController = NSHostingController(rootView: contentView)
 
-        // TODO:
-        // scheduleUpdate()
+        scheduleUpdate()
+    }
+
+    private func scheduleUpdate() {
+        timer?.cancel()
+
+        let seq = AsyncTimerSequence(
+            interval: .seconds(interval),
+            clock: .continuous
+        )
+
+        timer = Task {
+            let api = PullRequestAPI(githubToken)
+            await pullRequest.update(api)
+
+            for await _ in seq {
+                await pullRequest.update(api)
+            }
+        }
     }
 
     var body: some Scene {
@@ -56,7 +78,7 @@ struct PulseApp: App {
         Settings {
             SettingView(githubToken: $githubToken)
                 .onClosed {
-                    // TODO:
+                    scheduleUpdate()
                 }
         }
     }
