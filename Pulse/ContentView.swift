@@ -8,6 +8,7 @@ struct ContentView: View {
 
     @ObservedObject var pullRequest: PullRequestModel
     @State private var selection = Tab.settled
+    @Binding var githubToken: String
 
     var body: some View {
         VStack {
@@ -27,8 +28,22 @@ struct ContentView: View {
             }
             .padding(.top, 5)
             HStack {
-                Image(systemName: "clock.arrow.circlepath")
-                Text("00:00") // TODO:
+                Button {
+                    Task {
+                        let api = PullRequestAPI(githubToken)
+                        await pullRequest.update(api)
+                    }
+                } label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                }
+
+                let label = if let updatedAt = pullRequest.updatedAt {
+                    updatedAt.shortTime()
+                } else {
+                    "-"
+                }
+
+                Text(label)
             }
             .padding(.bottom, 5)
         }
@@ -37,5 +52,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(pullRequest: PullRequestModel())
+    ContentView(
+        pullRequest: PullRequestModel(),
+        githubToken: .constant("")
+    )
 }
