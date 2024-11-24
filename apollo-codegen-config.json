@@ -2,10 +2,10 @@
   "schemaNamespace": "Github",
   "input": {
     "operationSearchPaths": [
-      "**/*.graphql"
+      "Pulse/**/*.graphql"
     ],
     "schemaSearchPaths": [
-      "**/*.graphqls"
+      "Pulse/**/*.graphqls"
     ]
   },
   "output": {

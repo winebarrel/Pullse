@@ -1,8 +1,55 @@
 import Apollo
 import Foundation
 
-// NOTE: for Swift Concurrency
-extension Github.SearchPullRequestsQuery.Data.Search.Node.AsPullRequest: @unchecked Sendable {}
+struct PullRequest: Identifiable {
+    let owner: String
+    let repo: String
+    let title: String
+    let url: String
+    let mergeable: String
+    let commitUrl: String
+    let comment: String?
+    let commentAuthor: String?
+    let draft: Bool
+    let approvedCount: Int
+    let reviewResult: ReviewResult
+    let checkResult: CheckResult
+    let updatedAt: Date
+
+    var id: String {
+        commitUrl
+    }
+
+    var success: Bool {
+        reviewResult == .success && checkResult == .success
+    }
+
+    var pending: Bool {
+        draft ||
+            (reviewResult == .pending && checkResult == .pending) ||
+            (reviewResult == .success && checkResult == .pending) ||
+            (reviewResult == .pending && checkResult == .success)
+    }
+
+    enum ReviewResult {
+        case success
+        case failure
+        case pending
+    }
+
+    enum CheckResult {
+        case success
+        case failure
+        case pending
+    }
+}
+
+typealias PullRequests = [PullRequest]
+
+func - (left: PullRequests, right: PullRequests) -> PullRequests {
+    let rightIDs = right.map { $0.id }
+    return left.filter { !rightIDs.contains($0.id) }
+}
 
 struct PullRequestAPI {
     private let client: ApolloClient
@@ -20,17 +67,61 @@ struct PullRequestAPI {
         client = ApolloClient(networkTransport: transport, store: store)
     }
 
-    func fetch(_ githubQuery: String) async throws -> [Github.SearchPullRequestsQuery.Data.Search.Node.AsPullRequest] {
+    func fetch(_ githubQuery: String) async throws -> PullRequests {
         return try await withCheckedThrowingContinuation { continuation in
             let query = Github.SearchPullRequestsQuery(query: githubQuery)
 
             client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
                 switch result {
                 case .success(let value):
-                    var pulls: [Github.SearchPullRequestsQuery.Data.Search.Node.AsPullRequest] = []
+                    var pulls: PullRequests = []
 
                     value.data?.search.nodes?.forEach { body in
-                        if let pull = body?.asPullRequest {
+                        if let asPull = body?.asPullRequest {
+                            let reviewDecision = asPull.reviewDecision
+                            let reviewResult: PullRequest.ReviewResult
+
+                            if reviewDecision == nil || reviewDecision == .approved {
+                                reviewResult = .success
+                            } else if reviewDecision == .changesRequested {
+                                reviewResult = .failure
+                            } else {
+                                reviewResult = .pending
+                            }
+
+                            guard let commit = asPull.commits.nodes?.first??.commit else {
+                                return
+                            }
+
+                            let state = commit.statusCheckRollup?.state
+                            let checkResult: PullRequest.CheckResult
+
+                            if state == .success {
+                                checkResult = .success
+                            } else if state == .failure || state == .error {
+                                checkResult = .failure
+                            } else {
+                                checkResult = .pending
+                            }
+
+                            let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
+
+                            let pull = PullRequest(
+                                owner: asPull.repository.owner.login,
+                                repo: asPull.repository.name,
+                                title: asPull.title,
+                                url: asPull.url,
+                                mergeable: asPull.mergeable.rawValue,
+                                commitUrl: commit.url,
+                                comment: asPull.comments.nodes?.first??.bodyText,
+                                commentAuthor: asPull.comments.nodes?.first??.author?.login,
+                                draft: asPull.isDraft,
+                                approvedCount: asPull.reviews?.totalCount ?? 0,
+                                reviewResult: reviewResult,
+                                checkResult: checkResult,
+                                updatedAt: updatedAt
+                            )
+
                             pulls.append(pull)
                         }
                     }
