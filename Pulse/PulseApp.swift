@@ -5,6 +5,7 @@ import SwiftUI
 struct PulseApp: App {
     @State private var initialized = false
     @State private var isMenuPresented = false
+    @State private var githubToken = Vault.githubToken
 
     private var popover: NSPopover = {
         let pop = NSPopover()
@@ -51,6 +52,12 @@ struct PulseApp: App {
 
                 button.addSubview(mouseHandlerView)
             }
+        }
+        Settings {
+            SettingView(githubToken: $githubToken)
+                .onClosed {
+                    // TODO:
+                }
         }
     }
 }
