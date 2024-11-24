@@ -101,6 +101,7 @@ struct PullRequestAPI {
                             } else if state == .failure || state == .error {
                                 checkResult = .failure
                             } else {
+                                // NOTE: If status check is not set, it will be pending
                                 checkResult = .pending
                             }
 
