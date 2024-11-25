@@ -134,8 +134,8 @@ struct PullRequestAPI {
                     continuation.resume(returning: pulls)
                 case .failure(let err):
                     if let err = err as? Apollo.ResponseCodeInterceptor.ResponseCodeError,
-                       case .invalidResponseCode(let respOpt, _) = err,
-                       let resp = respOpt
+                       case .invalidResponseCode(let respOrNil, _) = err,
+                       let resp = respOrNil
                     {
                         continuation.resume(throwing: GitHubError.respNotOK(resp))
                     } else {
