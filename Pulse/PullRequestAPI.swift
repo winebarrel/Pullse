@@ -132,10 +132,30 @@ struct PullRequestAPI {
                     }
 
                     continuation.resume(returning: pulls)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
+                case .failure(let err):
+                    if let err = err as? Apollo.ResponseCodeInterceptor.ResponseCodeError,
+                       case .invalidResponseCode(let respOpt, _) = err,
+                       let resp = respOpt
+                    {
+                        continuation.resume(throwing: GitHubError.respNotOK(resp))
+                    } else {
+                        continuation.resume(throwing: err)
+                    }
                 }
             }
+        }
+    }
+}
+
+enum GitHubError: LocalizedError {
+    case respNotOK(HTTPURLResponse)
+
+    var errorDescription: String? {
+        switch self {
+        case .respNotOK(let resp):
+            let statusCode = resp.statusCode
+            let statusMessage = HTTPURLResponse.localizedString(forStatusCode: statusCode)
+            return "GitHub error: \(statusCode) \(statusMessage)"
         }
     }
 }
