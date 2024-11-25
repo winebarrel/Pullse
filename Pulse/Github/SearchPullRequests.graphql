@@ -19,6 +19,7 @@ query SearchPullRequests($query: String!) {
             author {
               login
             }
+            url
           }
         }
         commits(last: 1) {
