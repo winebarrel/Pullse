@@ -9,6 +9,7 @@ struct PullRequest: Identifiable {
     let mergeable: Github.MergeableState // NOTE: It might use
     let commitUrl: String
     let commentAuthor: String?
+    let commentUrl: String?
     let draft: Bool
     let approvedCount: Int
     let reviewResult: ReviewResult
@@ -28,6 +29,10 @@ struct PullRequest: Identifiable {
             (reviewResult == .pending && checkResult == .pending) ||
             (reviewResult == .success && checkResult == .pending) ||
             (reviewResult == .pending && checkResult == .success)
+    }
+
+    var latestUrl: String {
+        commentUrl ?? url
     }
 
     enum ReviewResult {
@@ -114,6 +119,7 @@ struct PullRequestAPI {
                                 mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
                                 commitUrl: commit.url,
                                 commentAuthor: asPull.comments.nodes?.first??.author?.login,
+                                commentUrl: asPull.comments.nodes?.first??.url,
                                 draft: asPull.isDraft,
                                 approvedCount: asPull.reviews?.totalCount ?? 0,
                                 reviewResult: reviewResult,
