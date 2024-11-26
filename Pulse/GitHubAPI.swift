@@ -1,4 +1,3 @@
-// TODO: rename
 import Apollo
 import Foundation
 
@@ -56,7 +55,7 @@ func - (left: PullRequests, right: PullRequests) -> PullRequests {
     return left.filter { !rightIDs.contains($0.id) }
 }
 
-actor PullRequestAPI {
+actor GitHubAPI {
     private let client: ApolloClient
 
     init(_ githubToken: String) {

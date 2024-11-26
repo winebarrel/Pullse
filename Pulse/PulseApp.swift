@@ -39,7 +39,7 @@ struct PulseApp: App {
         )
 
         timer = Task {
-            let api = PullRequestAPI(githubToken)
+            let api = GitHubAPI(githubToken)
             await pullRequest.update(api)
 
             for await _ in seq {
