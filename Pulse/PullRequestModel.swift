@@ -10,7 +10,7 @@ class PullRequestModel: ObservableObject {
     @Published var updatedAt: Date?
     @Published var error: GitHubError?
 
-    func update(_ api: PullRequestAPI) async {
+    func update(_ api: GitHubAPI) async {
         do {
             let pulls = try await api.fetch(githubQuery)
 

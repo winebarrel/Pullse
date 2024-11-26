@@ -30,7 +30,7 @@ struct ContentView: View {
             HStack {
                 Button {
                     Task {
-                        let api = PullRequestAPI(githubToken)
+                        let api = GitHubAPI(githubToken)
                         await pullRequest.update(api)
                     }
                 } label: {
