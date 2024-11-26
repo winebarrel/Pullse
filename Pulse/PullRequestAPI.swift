@@ -56,7 +56,7 @@ func - (left: PullRequests, right: PullRequests) -> PullRequests {
     return left.filter { !rightIDs.contains($0.id) }
 }
 
-struct PullRequestAPI {
+actor PullRequestAPI {
     private let client: ApolloClient
 
     init(_ githubToken: String) {
