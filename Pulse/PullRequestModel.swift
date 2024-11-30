@@ -3,11 +3,19 @@ import SwiftUI
 
 @MainActor
 class PullRequestModel: ObservableObject {
+    enum Status: String {
+        case unsettled = "check.black"
+        case success = "check.green"
+        case failure = "check.red"
+        case error
+    }
+
     @AppStorage("githubQuery") private var githubQuery = Constants.defaultGithubQuery
     @Published var settled: PullRequests = []
     @Published var pending: PullRequests = []
     @Published var updatedAt: Date?
     @Published var error: GitHubError?
+    @Published var status: Status = .unsettled
 
     func update(_ api: GitHubAPI) async {
         do {
@@ -23,12 +31,21 @@ class PullRequestModel: ObservableObject {
                 }
             }
 
+            if settled.isEmpty {
+                status = .unsettled
+            } else if settled.allSatisfy({ $0.success }) {
+                status = .success
+            } else {
+                status = .failure
+            }
+
             self.settled = settled
             self.pending = pending
             error = nil
             updatedAt = Date()
         } catch let githubError as GitHubError {
             error = githubError
+            status = .error
             self.settled = []
             self.pending = []
             updatedAt = nil
