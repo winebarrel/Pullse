@@ -52,8 +52,7 @@ struct PulseApp: App {
         MenuBarExtra {
             RightClickMenuView()
         } label: {
-            // TODO:
-            Image("check.black")
+            Image(pullRequest.status.rawValue)
         }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
             if !initialized {
                 initialize()
