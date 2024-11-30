@@ -13,6 +13,8 @@ class PullRequestModel: ObservableObject {
     func update(_ api: GitHubAPI) async {
         do {
             let pulls = try await api.fetch(githubQuery)
+            var settled: PullRequests = []
+            var pending: PullRequests = []
 
             for pull in pulls {
                 if pull.pending {
@@ -22,7 +24,8 @@ class PullRequestModel: ObservableObject {
                 }
             }
 
-            // TODO:
+            self.settled = settled
+            self.pending = pending
             updatedAt = Date()
         } catch let ghErr as GitHubError {
             error = ghErr
