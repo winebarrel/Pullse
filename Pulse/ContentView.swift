@@ -14,15 +14,15 @@ struct ContentView: View {
         VStack {
             TabView(selection: $selection) {
                 // TODO:
-                PullRequestListView()
+                ContentListView(pulls: pullRequest.settled)
                     .tabItem {
-                        Text("Settled (0)")
+                        Text("Settled (\(pullRequest.settled.count))")
                     }
                     .tag(Tab.settled)
                 // TODO:
-                PullRequestListView()
+                ContentListView(pulls: pullRequest.pending)
                     .tabItem {
-                        Text("Pending (0)")
+                        Text("Pending (\(pullRequest.pending.count))")
                     }
                     .tag(Tab.pending)
             }
