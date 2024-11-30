@@ -3,7 +3,6 @@ import SwiftUI
 
 @MainActor
 class PullRequestModel: ObservableObject {
-    // TODO:
     @AppStorage("githubQuery") private var githubQuery = Constants.defaultGithubQuery
     @Published var settled: PullRequests = []
     @Published var pending: PullRequests = []
@@ -26,9 +25,13 @@ class PullRequestModel: ObservableObject {
 
             self.settled = settled
             self.pending = pending
+            error = nil
             updatedAt = Date()
-        } catch let ghErr as GitHubError {
-            error = ghErr
+        } catch let githubError as GitHubError {
+            error = githubError
+            self.settled = []
+            self.pending = []
+            updatedAt = nil
         } catch {
             Logger.shared.error("failed to get pull requests: \(error)")
         }

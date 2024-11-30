@@ -14,17 +14,23 @@ struct ContentView: View {
         VStack {
             TabView(selection: $selection) {
                 // TODO:
-                ContentListView(pulls: pullRequest.settled)
-                    .tabItem {
-                        Text("Settled (\(pullRequest.settled.count))")
-                    }
-                    .tag(Tab.settled)
+                ContentListView(
+                    pulls: pullRequest.settled,
+                    githubError: pullRequest.error
+                )
+                .tabItem {
+                    Text("Settled (\(pullRequest.settled.count))")
+                }
+                .tag(Tab.settled)
                 // TODO:
-                ContentListView(pulls: pullRequest.pending)
-                    .tabItem {
-                        Text("Pending (\(pullRequest.pending.count))")
-                    }
-                    .tag(Tab.pending)
+                ContentListView(
+                    pulls: pullRequest.pending,
+                    githubError: pullRequest.error
+                )
+                .tabItem {
+                    Text("Pending (\(pullRequest.pending.count))")
+                }
+                .tag(Tab.pending)
             }
             .padding(.top, 5)
             HStack {
