@@ -28,6 +28,10 @@ clean:
 schema:
 	curl -sSfLo Pulse/Github/schema.graphqls https://docs.github.com/public/fpt/schema.docs.graphql
 
+.PHONY: clean-generated
+clean-generated:
+	rm -rf Pulse/Github/{Github.graphql.swift,Operations,Schema}
+
 .PHONY: generate
-generate:
+generate: clean-generated
 	./apollo-ios-cli generate

@@ -57,13 +57,6 @@ struct ContentListView: View {
                             .foregroundColor(.primary)
                         }
                     }
-                    if let author = pull.commentAuthor {
-                        HStack(spacing: 0) {
-                            Image(systemName: "bubble")
-                            Text("@\(author)")
-                                .font(.footnote)
-                        }
-                    }
                 }
             }
         }
