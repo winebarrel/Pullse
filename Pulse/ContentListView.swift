@@ -40,14 +40,17 @@ struct ContentListView: View {
                                 .foregroundColor(.white)
                                 .background(.gray, in: RoundedRectangle(cornerRadius: 5))
                         }
-                        let status = pull.success ? "✅" : "❌"
-                        let label = pull.pending ? pull.title : status + pull.title
-                        Text(label)
+
+                        if !pull.pending {
+                            Text(pull.success ? "✅" : "❌")
+                        }
+                        Text(pull.title)
                             .multilineTextAlignment(.leading)
                             .underline(hoverId == pull.id)
                             .onHover { hovering in
                                 hoverId = hovering ? pull.id : ""
                             }
+                        Text("(\(pull.updatedAt.relative()))").font(.caption2).foregroundStyle(Color.primary)
                         if pull.approvedCount > 0 {
                             HStack(spacing: 0) {
                                 Image(systemName: "person.crop.circle.badge.checkmark")
