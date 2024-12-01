@@ -121,7 +121,7 @@ actor GitHubAPI {
                                 commentAuthor: asPull.comments.nodes?.first??.author?.login,
                                 commentUrl: asPull.comments.nodes?.first??.url,
                                 draft: asPull.isDraft,
-                                approvedCount: asPull.reviews?.totalCount ?? 0,
+                                approvedCount: asPull.approvedReviews?.totalCount ?? 0,
                                 reviewResult: reviewResult,
                                 checkResult: checkResult,
                                 updatedAt: updatedAt
