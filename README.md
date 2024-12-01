@@ -37,7 +37,7 @@ https://github.com/winebarrel/Pulse/releases/latest
 
 | Field | Value |
 | - | - |
-| GitHub token | Token with repo scope.<br>Create from https://github.com/settings/tokens/new |
+| GitHub token | Token with repo scope.<br>Create from https://github.com/settings/tokens/new?scopes=repo |
 | Search query| Pull request search query.<br>See https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests |
 
 ## Note
