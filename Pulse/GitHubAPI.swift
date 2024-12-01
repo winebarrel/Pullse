@@ -80,70 +80,70 @@ actor GitHubAPI {
                     var pulls: PullRequests = []
 
                     value.data?.search.nodes?.forEach { body in
-                        if let asPull = body?.asPullRequest {
-                            let reviewDecision = asPull.reviewDecision
-                            let reviewResult: PullRequest.ReviewResult
-
-                            if reviewDecision == nil || reviewDecision == .approved {
-                                reviewResult = .success
-                            } else if reviewDecision == .changesRequested {
-                                reviewResult = .failure
-                            } else {
-                                reviewResult = .pending
-                            }
-
-                            guard let commit = asPull.commits.nodes?.first??.commit else {
-                                return
-                            }
-
-                            let state = commit.statusCheckRollup?.state
-                            let checkResult: PullRequest.CheckResult
-
-                            if state == .success {
-                                checkResult = .success
-                            } else if state == .failure || state == .error {
-                                checkResult = .failure
-                            } else {
-                                // NOTE: If status check is not set, it will be pending
-                                checkResult = .pending
-                            }
-
-                            let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
-
-                            let comment = asPull.comments.edges?.first??.node
-                            let review = asPull.reviews?.edges?.first??.node
-
-                            let latestUrl = if let comment, let review {
-                                if comment.createdAt > review.createdAt {
-                                    comment.url
-                                } else {
-                                    review.url
-                                }
-                            } else if let comment {
-                                comment.url
-                            } else if let review {
-                                review.url
-                            } else {
-                                asPull.url
-                            }
-
-                            let pull = PullRequest(
-                                owner: asPull.repository.owner.login,
-                                repo: asPull.repository.name,
-                                title: asPull.title,
-                                url: asPull.url,
-                                latestUrl: latestUrl,
-                                mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
-                                commitUrl: commit.url,
-                                draft: asPull.isDraft,
-                                approvedCount: asPull.approvedReviews?.totalCount ?? 0,
-                                reviewResult: reviewResult,
-                                checkResult: checkResult,
-                                updatedAt: updatedAt
-                            )
-
-                            pulls.append(pull)
+                        guard let asPull = body?.asPullRequest else {
+                            return
                         }
+
+                        guard let commit = asPull.commits.nodes?.first??.commit else {
+                            return
+                        }
+
+                        let reviewDecision = asPull.reviewDecision
+
+                        let reviewResult: PullRequest.ReviewResult = if reviewDecision == nil || reviewDecision == .approved {
+                            .success
+                        } else if reviewDecision == .changesRequested {
+                            .failure
+                        } else {
+                            .pending
+                        }
+
+                        let state = commit.statusCheckRollup?.state
+
+                        let checkResult: PullRequest.CheckResult = if state == .success {
+                            .success
+                        } else if state == .failure || state == .error {
+                            .failure
+                        } else {
+                            // NOTE: If status check is not set, it will be pending
+                            .pending
+                        }
+
+                        let comment = asPull.comments.edges?.first??.node
+                        let review = asPull.reviews?.edges?.first??.node
+
+                        let latestUrl = if let comment, let review {
+                            if comment.createdAt > review.createdAt {
+                                comment.url
+                            } else {
+                                review.url
+                            }
+                        } else if let comment {
+                            comment.url
+                        } else if let review {
+                            review.url
+                        } else {
+                            asPull.url
+                        }
+
+                        let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
+
+                        let pull = PullRequest(
+                            owner: asPull.repository.owner.login,
+                            repo: asPull.repository.name,
+                            title: asPull.title,
+                            url: asPull.url,
+                            latestUrl: latestUrl,
+                            mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
+                            commitUrl: commit.url,
+                            draft: asPull.isDraft,
+                            approvedCount: asPull.approvedReviews?.totalCount ?? 0,
+                            reviewResult: reviewResult,
+                            checkResult: checkResult,
+                            updatedAt: updatedAt
+                        )
+
+                        pulls.append(pull)
                     }
 
                     continuation.resume(returning: pulls)
