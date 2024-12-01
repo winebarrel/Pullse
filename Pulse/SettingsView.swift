@@ -6,6 +6,8 @@ struct SettingView: View {
     @AppStorage("interval") private var interval = Constants.defaultInterval
     @AppStorage("githubQuery") private var githubQuery = Constants.defaultGithubQuery
     @State private var launchAtLogin: Bool = SMAppService.mainApp.status == .enabled
+    private static let minInterval: Double = 1
+    private static let maxInterval: Double = 14400
 
     var body: some View {
         Form {
@@ -16,10 +18,10 @@ struct SettingView: View {
             }
             TextField("Interval (sec)", value: $interval, format: .number.grouping(.never))
                 .onChange(of: interval) {
-                    if interval < 1 {
-                        interval = 1
-                    } else if interval > 3600 {
-                        interval = 3600
+                    if interval < SettingView.minInterval {
+                        interval = SettingView.minInterval
+                    } else if interval > SettingView.maxInterval {
+                        interval = SettingView.maxInterval
                     }
                 }
             HStack {
