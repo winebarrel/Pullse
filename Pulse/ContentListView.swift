@@ -15,9 +15,25 @@ struct ContentListView: View {
                     Spacer()
                 }
             }
+        } else if pulls.isEmpty {
+            List {
+                HStack {
+                    Spacer()
+                    Image(systemName: "tray")
+                        .imageScale(.large)
+                    Text("No pull requests")
+                    Spacer()
+                }
+            }
         } else {
             // TODO:
-            Text("ContentListView")
+            List {
+                HStack {
+                    Spacer()
+                    Text("ContentListView")
+                    Spacer()
+                }
+            }
         }
     }
 }
