@@ -11,27 +11,37 @@ struct SettingView: View {
 
     var body: some View {
         Form {
-            SecureField(text: $githubToken) {
-                Link("GitHub token", destination: URL(string: "https://github.com/settings/tokens")!)
-            }.onChange(of: githubToken) {
-                Vault.githubToken = githubToken
+            HStack {
+                SecureField("GitHub token", text: $githubToken).onChange(of: githubToken) {
+                    Vault.githubToken = githubToken
+                }
+                Link(destination: URL(string: "https://github.com/settings/tokens")!) {
+                    Image(systemName: "questionmark.circle")
+                }
             }
-            TextField("Interval (sec)", value: $interval, format: .number.grouping(.never))
-                .onChange(of: interval) {
-                    if interval < SettingView.minInterval {
-                        interval = SettingView.minInterval
-                    } else if interval > SettingView.maxInterval {
-                        interval = SettingView.maxInterval
+            HStack {
+                TextField("Search query", text: $githubQuery, axis: .vertical)
+                    .lineLimit(5...)
+                VStack {
+                    Link(destination: URL(string: "https://github.com/pulls?q=" + (githubQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))!) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    Link(destination: URL(string: "https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests")!) {
+                        Image(systemName: "questionmark.circle")
                     }
                 }
+            }
             HStack {
-                TextField(text: $githubQuery, axis: .vertical) {
-                    Link("Search query", destination: URL(string: "https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests")!)
-                }
-                .lineLimit(5...)
-                Link(destination: URL(string: "https://github.com/pulls?q=" + (githubQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))!) {
-                    Image(systemName: "magnifyingglass")
-                }
+                TextField("Interval (sec)", value: $interval, format: .number.grouping(.never))
+                    .onChange(of: interval) {
+                        if interval < SettingView.minInterval {
+                            interval = SettingView.minInterval
+                        } else if interval > SettingView.maxInterval {
+                            interval = SettingView.maxInterval
+                        }
+                    }
+                Image(systemName: "questionmark.circle") // for padding
+                    .opacity(0.0)
             }
             Toggle("Launch at login", isOn: $launchAtLogin)
                 .onChange(of: launchAtLogin) {
