@@ -42,7 +42,7 @@ struct ContentListView: View {
                         }
 
                         if !pull.pending {
-                            Text(pull.success ? "✅" : "❌")
+                            Text(pull.statusEmoji)
                         }
                         Text(pull.title)
                             .multilineTextAlignment(.leading)

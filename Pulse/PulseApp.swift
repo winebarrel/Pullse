@@ -12,6 +12,10 @@ struct PulseApp: App {
     @AppStorage("interval") private var interval = Constants.defaultInterval
     @StateObject private var pullRequest = PullRequestModel()
 
+    // swiftlint:disable unused_declaration
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    // swiftlint:enable unused_declaration
+
     private var popover: NSPopover = {
         let pop = NSPopover()
         pop.behavior = .transient
@@ -21,8 +25,7 @@ struct PulseApp: App {
     }()
 
     private func initialize() {
-        // TODO:
-        // Notification.initialize()
+        Notification.initialize()
 
         let contentView = ContentView(pullRequest: pullRequest, githubToken: $githubToken)
         popover.contentViewController = NSHostingController(rootView: contentView)
