@@ -32,7 +32,7 @@ query SearchPullRequests($query: String!) {
             }
           }
         }
-        reviews(states: APPROVED) {
+        approvedReviews: reviews(states: APPROVED) {
           totalCount
         }
       }

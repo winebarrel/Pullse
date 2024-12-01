@@ -8,7 +8,7 @@ extension Github {
     static let operationName: String = "SearchPullRequests"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename nodes { __typename author { __typename login } url } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } reviews(states: APPROVED) { __typename totalCount } } } } }"#
+        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename nodes { __typename author { __typename login } url } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } approvedReviews: reviews(states: APPROVED) { __typename totalCount } } } } }"#
       ))
 
     public var query: String
@@ -85,7 +85,7 @@ extension Github {
               .field("updatedAt", Github.DateTime.self),
               .field("comments", Comments.self, arguments: ["last": 1]),
               .field("commits", Commits.self, arguments: ["last": 1]),
-              .field("reviews", Reviews?.self, arguments: ["states": "APPROVED"]),
+              .field("reviews", alias: "approvedReviews", ApprovedReviews?.self, arguments: ["states": "APPROVED"]),
             ] }
 
             /// The repository associated with this node.
@@ -107,7 +107,7 @@ extension Github {
             /// A list of commits present in this pull request's head branch not present in the base branch.
             var commits: Commits { __data["commits"] }
             /// A list of reviews associated with the pull request.
-            var reviews: Reviews? { __data["reviews"] }
+            var approvedReviews: ApprovedReviews? { __data["approvedReviews"] }
 
             /// Search.Node.AsPullRequest.Repository
             ///
@@ -271,10 +271,10 @@ extension Github {
               }
             }
 
-            /// Search.Node.AsPullRequest.Reviews
+            /// Search.Node.AsPullRequest.ApprovedReviews
             ///
             /// Parent Type: `PullRequestReviewConnection`
-            struct Reviews: Github.SelectionSet {
+            struct ApprovedReviews: Github.SelectionSet {
               let __data: DataDict
               init(_dataDict: DataDict) { __data = _dataDict }
 
