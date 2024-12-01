@@ -21,7 +21,12 @@ https://github.com/winebarrel/Pulse/releases/latest
 
 ### Status indication by menu bar icons
 
-(WIP)
+| Icon | Status |
+| - | - |
+| ![](https://github.com/user-attachments/assets/f33caee2-a819-40cd-8378-e50759d19e39) | No settled pull requests |
+| ![](https://github.com/user-attachments/assets/e9ea6172-d90f-47cc-a9e4-8041755616a4) | All pull requests approved and passed testing |
+| ![](https://github.com/user-attachments/assets/776a93f9-2e75-4a9a-9a35-dbc8131c7382) | Pull request test fails |
+
 
 ## Configuration
 
