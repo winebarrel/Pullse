@@ -99,6 +99,7 @@ extension Github {
       case "Issue": return Github.Objects.Issue
       case "IssueComment": return Github.Objects.IssueComment
       case "IssueCommentConnection": return Github.Objects.IssueCommentConnection
+      case "IssueCommentEdge": return Github.Objects.IssueCommentEdge
       case "Label": return Github.Objects.Label
       case "LabeledEvent": return Github.Objects.LabeledEvent
       case "Language": return Github.Objects.Language
@@ -192,6 +193,7 @@ extension Github {
       case "PullRequestReview": return Github.Objects.PullRequestReview
       case "PullRequestReviewComment": return Github.Objects.PullRequestReviewComment
       case "PullRequestReviewConnection": return Github.Objects.PullRequestReviewConnection
+      case "PullRequestReviewEdge": return Github.Objects.PullRequestReviewEdge
       case "PullRequestReviewThread": return Github.Objects.PullRequestReviewThread
       case "PullRequestThread": return Github.Objects.PullRequestThread
       case "Push": return Github.Objects.Push

@@ -6,10 +6,9 @@ struct PullRequest: Identifiable {
     let repo: String
     let title: String
     let url: String
+    let latestUrl: String
     let mergeable: Github.MergeableState // NOTE: It might use
     let commitUrl: String
-    let commentAuthor: String?
-    let commentUrl: String?
     let draft: Bool
     let approvedCount: Int
     let reviewResult: ReviewResult
@@ -29,10 +28,6 @@ struct PullRequest: Identifiable {
             (reviewResult == .pending && checkResult == .pending) ||
             (reviewResult == .success && checkResult == .pending) ||
             (reviewResult == .pending && checkResult == .success)
-    }
-
-    var latestUrl: String {
-        commentUrl ?? url
     }
 
     enum ReviewResult {
@@ -111,15 +106,31 @@ actor GitHubAPI {
 
                             let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
 
+                            let comment = asPull.comments.edges?.first??.node
+                            let review = asPull.reviews?.edges?.first??.node
+
+                            let latestUrl = if let comment, let review {
+                                if comment.createdAt > review.createdAt {
+                                    comment.url
+                                } else {
+                                    review.url
+                                }
+                            } else if let comment {
+                                commit.url
+                            } else if let review {
+                                review.url
+                            } else {
+                                asPull.url
+                            }
+
                             let pull = PullRequest(
                                 owner: asPull.repository.owner.login,
                                 repo: asPull.repository.name,
                                 title: asPull.title,
                                 url: asPull.url,
+                                latestUrl: latestUrl,
                                 mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
                                 commitUrl: commit.url,
-                                commentAuthor: asPull.comments.nodes?.first??.author?.login,
-                                commentUrl: asPull.comments.nodes?.first??.url,
                                 draft: asPull.isDraft,
                                 approvedCount: asPull.approvedReviews?.totalCount ?? 0,
                                 reviewResult: reviewResult,

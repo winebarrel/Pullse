@@ -8,7 +8,7 @@ extension Github {
     static let operationName: String = "SearchPullRequests"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename nodes { __typename author { __typename login } url } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } approvedReviews: reviews(states: APPROVED) { __typename totalCount } } } } }"#
+        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename edges { __typename node { __typename url createdAt } } } reviews(last: 1) { __typename edges { __typename node { __typename url createdAt } } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } approvedReviews: reviews(states: APPROVED) { __typename totalCount } } } } }"#
       ))
 
     public var query: String
@@ -84,6 +84,7 @@ extension Github {
               .field("isDraft", Bool.self),
               .field("updatedAt", Github.DateTime.self),
               .field("comments", Comments.self, arguments: ["last": 1]),
+              .field("reviews", Reviews?.self, arguments: ["last": 1]),
               .field("commits", Commits.self, arguments: ["last": 1]),
               .field("reviews", alias: "approvedReviews", ApprovedReviews?.self, arguments: ["states": "APPROVED"]),
             ] }
@@ -104,6 +105,8 @@ extension Github {
             var updatedAt: Github.DateTime { __data["updatedAt"] }
             /// A list of comments associated with the pull request.
             var comments: Comments { __data["comments"] }
+            /// A list of reviews associated with the pull request.
+            var reviews: Reviews? { __data["reviews"] }
             /// A list of commits present in this pull request's head branch not present in the base branch.
             var commits: Commits { __data["commits"] }
             /// A list of reviews associated with the pull request.
@@ -156,46 +159,100 @@ extension Github {
               static var __parentType: any ApolloAPI.ParentType { Github.Objects.IssueCommentConnection }
               static var __selections: [ApolloAPI.Selection] { [
                 .field("__typename", String.self),
-                .field("nodes", [Node?]?.self),
+                .field("edges", [Edge?]?.self),
               ] }
 
-              /// A list of nodes.
-              var nodes: [Node?]? { __data["nodes"] }
+              /// A list of edges.
+              var edges: [Edge?]? { __data["edges"] }
 
-              /// Search.Node.AsPullRequest.Comments.Node
+              /// Search.Node.AsPullRequest.Comments.Edge
               ///
-              /// Parent Type: `IssueComment`
-              struct Node: Github.SelectionSet {
+              /// Parent Type: `IssueCommentEdge`
+              struct Edge: Github.SelectionSet {
                 let __data: DataDict
                 init(_dataDict: DataDict) { __data = _dataDict }
 
-                static var __parentType: any ApolloAPI.ParentType { Github.Objects.IssueComment }
+                static var __parentType: any ApolloAPI.ParentType { Github.Objects.IssueCommentEdge }
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
-                  .field("author", Author?.self),
-                  .field("url", Github.URI.self),
+                  .field("node", Node?.self),
                 ] }
 
-                /// The actor who authored the comment.
-                var author: Author? { __data["author"] }
-                /// The HTTP URL for this issue comment
-                var url: Github.URI { __data["url"] }
+                /// The item at the end of the edge.
+                var node: Node? { __data["node"] }
 
-                /// Search.Node.AsPullRequest.Comments.Node.Author
+                /// Search.Node.AsPullRequest.Comments.Edge.Node
                 ///
-                /// Parent Type: `Actor`
-                struct Author: Github.SelectionSet {
+                /// Parent Type: `IssueComment`
+                struct Node: Github.SelectionSet {
                   let __data: DataDict
                   init(_dataDict: DataDict) { __data = _dataDict }
 
-                  static var __parentType: any ApolloAPI.ParentType { Github.Interfaces.Actor }
+                  static var __parentType: any ApolloAPI.ParentType { Github.Objects.IssueComment }
                   static var __selections: [ApolloAPI.Selection] { [
                     .field("__typename", String.self),
-                    .field("login", String.self),
+                    .field("url", Github.URI.self),
+                    .field("createdAt", Github.DateTime.self),
                   ] }
 
-                  /// The username of the actor.
-                  var login: String { __data["login"] }
+                  /// The HTTP URL for this issue comment
+                  var url: Github.URI { __data["url"] }
+                  /// Identifies the date and time when the object was created.
+                  var createdAt: Github.DateTime { __data["createdAt"] }
+                }
+              }
+            }
+
+            /// Search.Node.AsPullRequest.Reviews
+            ///
+            /// Parent Type: `PullRequestReviewConnection`
+            struct Reviews: Github.SelectionSet {
+              let __data: DataDict
+              init(_dataDict: DataDict) { __data = _dataDict }
+
+              static var __parentType: any ApolloAPI.ParentType { Github.Objects.PullRequestReviewConnection }
+              static var __selections: [ApolloAPI.Selection] { [
+                .field("__typename", String.self),
+                .field("edges", [Edge?]?.self),
+              ] }
+
+              /// A list of edges.
+              var edges: [Edge?]? { __data["edges"] }
+
+              /// Search.Node.AsPullRequest.Reviews.Edge
+              ///
+              /// Parent Type: `PullRequestReviewEdge`
+              struct Edge: Github.SelectionSet {
+                let __data: DataDict
+                init(_dataDict: DataDict) { __data = _dataDict }
+
+                static var __parentType: any ApolloAPI.ParentType { Github.Objects.PullRequestReviewEdge }
+                static var __selections: [ApolloAPI.Selection] { [
+                  .field("__typename", String.self),
+                  .field("node", Node?.self),
+                ] }
+
+                /// The item at the end of the edge.
+                var node: Node? { __data["node"] }
+
+                /// Search.Node.AsPullRequest.Reviews.Edge.Node
+                ///
+                /// Parent Type: `PullRequestReview`
+                struct Node: Github.SelectionSet {
+                  let __data: DataDict
+                  init(_dataDict: DataDict) { __data = _dataDict }
+
+                  static var __parentType: any ApolloAPI.ParentType { Github.Objects.PullRequestReview }
+                  static var __selections: [ApolloAPI.Selection] { [
+                    .field("__typename", String.self),
+                    .field("url", Github.URI.self),
+                    .field("createdAt", Github.DateTime.self),
+                  ] }
+
+                  /// The HTTP URL permalink for this PullRequestReview.
+                  var url: Github.URI { __data["url"] }
+                  /// Identifies the date and time when the object was created.
+                  var createdAt: Github.DateTime { __data["createdAt"] }
                 }
               }
             }
