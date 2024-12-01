@@ -15,7 +15,7 @@ struct SettingView: View {
                 SecureField("GitHub token", text: $githubToken).onChange(of: githubToken) {
                     Vault.githubToken = githubToken
                 }
-                Link(destination: URL(string: "https://github.com/settings/tokens")!) {
+                Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
                     Image(systemName: "questionmark.circle")
                 }
             }
