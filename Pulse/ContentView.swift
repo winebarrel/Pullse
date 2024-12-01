@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             TabView(selection: $selection) {
-                // TODO:
                 ContentListView(
                     pulls: pullRequest.settled,
                     githubError: pullRequest.error
@@ -22,7 +21,6 @@ struct ContentView: View {
                     Text("Settled (\(pullRequest.settled.count))")
                 }
                 .tag(Tab.settled)
-                // TODO:
                 ContentListView(
                     pulls: pullRequest.pending,
                     githubError: pullRequest.error

@@ -30,6 +30,10 @@ struct PullRequest: Identifiable {
             (reviewResult == .pending && checkResult == .success)
     }
 
+    var statusEmoji: String {
+        success ? "✅" : "❌"
+    }
+
     enum ReviewResult {
         case success
         case failure
@@ -116,7 +120,7 @@ actor GitHubAPI {
                                     review.url
                                 }
                             } else if let comment {
-                                commit.url
+                                comment.url
                             } else if let review {
                                 review.url
                             } else {

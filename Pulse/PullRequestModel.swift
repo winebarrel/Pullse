@@ -39,10 +39,15 @@ class PullRequestModel: ObservableObject {
                 status = .failure
             }
 
+            let newSettled = settled - self.settled
             self.settled = settled
             self.pending = pending
             error = nil
             updatedAt = Date()
+
+            if !newSettled.isEmpty {
+                notify(newSettled)
+            }
         } catch let githubError as GitHubError {
             error = githubError
             status = .error
@@ -51,6 +56,19 @@ class PullRequestModel: ObservableObject {
             updatedAt = nil
         } catch {
             Logger.shared.error("failed to get pull requests: \(error)")
+        }
+    }
+
+    private func notify(_ pulls: PullRequests) {
+        for pull in pulls {
+            Task {
+                await Notification.notify(
+                    id: pull.id,
+                    title: "\(pull.owner)/\(pull.repo)",
+                    body: pull.statusEmoji + pull.title,
+                    url: pull.latestUrl
+                )
+            }
         }
     }
 }
