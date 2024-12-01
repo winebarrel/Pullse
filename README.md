@@ -32,7 +32,13 @@ https://github.com/winebarrel/Pulse/releases/latest
 
 **Right-click menu** > **Settings**:
 
-(WIP)
+![](https://github.com/user-attachments/assets/5f72bf13-71d7-481d-a657-35617ec13c2c)
+![](https://github.com/user-attachments/assets/5ce2b724-32cd-40eb-91bb-ae4f72e0ce1f)
+
+| Field | Value |
+| - | - |
+| GitHub token | Token with repo scope. Create from https://github.com/settings/tokens/new |
+| Search query| Pull request search query.<br>See https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests |
 
 ## Note
 
