@@ -12,11 +12,12 @@ https://github.com/winebarrel/Pulse/releases/latest
 
 ### Show pull requests in menu bar
 
-(WIP)
+![](https://github.com/user-attachments/assets/1b7601ec-7820-454b-9165-63cc771e72b2)
+![](https://github.com/user-attachments/assets/8af168dd-30fd-4e57-8c75-1fd491bc60ad)
 
 ### Notification of settled pull requests
 
-(WIP)
+![](https://github.com/user-attachments/assets/db6a9167-c9ef-4874-a1cf-5380f1b02d17)
 
 ### Status indication by menu bar icons
 
