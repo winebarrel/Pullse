@@ -86,7 +86,7 @@ actor GitHubAPI {
                 }
             }
 
-            return Array(allPullRequests.values).sorted { $0.updatedAt < $1.updatedAt }
+            return Array(allPullRequests.values).sorted { $0.updatedAt > $1.updatedAt }
         }
     }
 
