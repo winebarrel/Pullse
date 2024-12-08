@@ -33,12 +33,20 @@ https://github.com/winebarrel/Pulse/releases/latest
 **Right-click menu** > **Settings**:
 
 ![](https://github.com/user-attachments/assets/5f72bf13-71d7-481d-a657-35617ec13c2c)
-![](https://github.com/user-attachments/assets/5ce2b724-32cd-40eb-91bb-ae4f72e0ce1f)
+![](https://github.com/user-attachments/assets/ef9f0d74-6286-414c-9092-98af2d07182e)
 
 | Field | Value |
 | - | - |
 | GitHub token | Token with repo scope.<br>Create from https://github.com/settings/tokens/new?scopes=repo |
 | Search query| Pull request search query.<br>See https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests |
+
+### "OR" in query
+
+Enclose words in curly brackets (`{..}`) to search as `OR`.
+
+```
+is:open is:pr { author:@me assignee:@me } archived:false
+```
 
 ## Note
 
