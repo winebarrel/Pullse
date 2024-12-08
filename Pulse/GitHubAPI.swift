@@ -70,13 +70,13 @@ actor GitHubAPI {
         client = ApolloClient(networkTransport: transport, store: store)
     }
 
-    func fetchQueries(_ queries: [String]) async throws -> PullRequests {
+    func fetch(_ queries: [String]) async throws -> PullRequests {
         try await withThrowingTaskGroup(of: PullRequests.self) { group in
             var allPullRequests: [String: PullRequest] = [:]
 
             for query in queries {
                 group.addTask {
-                    try await self.fetch(query)
+                    try await self.fetchFromQuery(query)
                 }
             }
 
@@ -90,7 +90,7 @@ actor GitHubAPI {
         }
     }
 
-    private func fetch(_ githubQuery: String) async throws -> PullRequests {
+    private func fetchFromQuery(_ githubQuery: String) async throws -> PullRequests {
         try await withCheckedThrowingContinuation { continuation in
             let query = Github.SearchPullRequestsQuery(query: githubQuery)
 

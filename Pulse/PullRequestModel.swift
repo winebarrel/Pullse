@@ -20,7 +20,7 @@ class PullRequestModel: ObservableObject {
     func update(_ api: GitHubAPI) async {
         do {
             let queries = Query.parse(githubQuery)
-            let pulls = try await api.fetchQueries(queries)
+            let pulls = try await api.fetch(queries)
             var settled: PullRequests = []
             var pending: PullRequests = []
 
