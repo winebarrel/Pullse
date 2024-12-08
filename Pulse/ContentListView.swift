@@ -51,6 +51,10 @@ struct ContentListView: View {
                                 hoverId = hovering ? pull.id : ""
                             }
                         Text("(\(pull.updatedAt.relative()))").font(.caption2).foregroundStyle(Color.primary)
+                        if pull.checkResult == .success {
+                            Image(systemName: "checklist.checked")
+                                .foregroundColor(.primary)
+                        }
                         if pull.approvedCount > 0 {
                             HStack(spacing: 0) {
                                 Image(systemName: "person.crop.circle.badge.checkmark")
