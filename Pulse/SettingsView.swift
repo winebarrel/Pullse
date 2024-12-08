@@ -23,9 +23,20 @@ struct SettingView: View {
                 TextField("Search query", text: $githubQuery, axis: .vertical)
                     .lineLimit(5...)
                 VStack {
-                    Link(destination: URL(string: "https://github.com/pulls?q=" + (githubQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))!) {
+                    Button {
+                        for query in Query.parse(githubQuery) {
+                            Task {
+                                let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                                let url = URL(string: "https://github.com/pulls?q=" + (encoded ?? ""))!
+                                NSWorkspace.shared.open(url)
+                            }
+                        }
+                    } label: {
                         Image(systemName: "magnifyingglass")
-                    }.effectHoverCursor()
+                    }
+                    .effectHoverCursor()
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundStyle(.link)
                     Link(destination: URL(string: "https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests")!) {
                         Image(systemName: "questionmark.circle")
                     }.effectHoverCursor()
