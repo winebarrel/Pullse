@@ -39,7 +39,7 @@ struct ContentView: View {
                     }
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
-                }
+                }.effectHoverCursor()
 
                 let label = if let updatedAt = pullRequest.updatedAt {
                     updatedAt.shortTime()

@@ -17,7 +17,7 @@ struct SettingView: View {
                 }
                 Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
                     Image(systemName: "questionmark.circle")
-                }
+                }.effectHoverCursor()
             }
             HStack {
                 TextField("Search query", text: $githubQuery, axis: .vertical)
@@ -25,10 +25,10 @@ struct SettingView: View {
                 VStack {
                     Link(destination: URL(string: "https://github.com/pulls?q=" + (githubQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))!) {
                         Image(systemName: "magnifyingglass")
-                    }
+                    }.effectHoverCursor()
                     Link(destination: URL(string: "https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests")!) {
                         Image(systemName: "questionmark.circle")
-                    }
+                    }.effectHoverCursor()
                 }
             }
             HStack {
@@ -62,6 +62,7 @@ struct SettingView: View {
                 // swiftlint:enable force_cast
                 Text("Ver. \(appVer).\(buildVer)")
             }
+            .effectHoverCursor()
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(20)

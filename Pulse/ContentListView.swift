@@ -50,6 +50,7 @@ struct ContentListView: View {
                             .onHover { hovering in
                                 hoverId = hovering ? pull.id : ""
                             }
+                            .effectHoverCursor()
                         Text("(\(pull.updatedAt.relative()))").font(.caption2).foregroundStyle(Color.primary)
                         if pull.checkResult == .success {
                             Image(systemName: "checklist.checked")
