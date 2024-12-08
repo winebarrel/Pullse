@@ -70,8 +70,28 @@ actor GitHubAPI {
         client = ApolloClient(networkTransport: transport, store: store)
     }
 
-    func fetch(_ githubQuery: String) async throws -> PullRequests {
-        return try await withCheckedThrowingContinuation { continuation in
+    func fetch(_ queries: [String]) async throws -> PullRequests {
+        try await withThrowingTaskGroup(of: PullRequests.self) { group in
+            var allPullRequests: [String: PullRequest] = [:]
+
+            for query in queries {
+                group.addTask {
+                    try await self.fetchFromQuery(query)
+                }
+            }
+
+            for try await prs in group {
+                for pullRequest in prs {
+                    allPullRequests[pullRequest.url] = pullRequest
+                }
+            }
+
+            return Array(allPullRequests.values).sorted { $0.updatedAt < $1.updatedAt }
+        }
+    }
+
+    private func fetchFromQuery(_ githubQuery: String) async throws -> PullRequests {
+        try await withCheckedThrowingContinuation { continuation in
             let query = Github.SearchPullRequestsQuery(query: githubQuery)
 
             client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
