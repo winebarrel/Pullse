@@ -43,6 +43,8 @@ struct ContentListView: View {
 
                         if !pull.pending {
                             Text(pull.statusEmoji)
+                        } else if pull.checkResult == .failure {
+                            Text("❌")
                         }
                         Text(pull.title)
                             .multilineTextAlignment(.leading)
