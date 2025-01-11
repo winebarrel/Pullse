@@ -16,7 +16,7 @@ struct PullRequest: Identifiable {
     let updatedAt: Date
 
     var id: String {
-        commitUrl
+        url
     }
 
     var success: Bool {
