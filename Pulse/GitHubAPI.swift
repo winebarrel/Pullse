@@ -50,8 +50,11 @@ struct PullRequest: Identifiable {
 typealias PullRequests = [PullRequest]
 
 func - (left: PullRequests, right: PullRequests) -> PullRequests {
-    let rightIDs = right.map { $0.id }
-    return left.filter { !rightIDs.contains($0.id) }
+    let rightTups = right.map { ($0.id, $0.reviewResult, $0.checkResult) }
+    return left.filter {
+        let tup = ($0.id, $0.reviewResult, $0.checkResult)
+        return !rightTups.contains { $0 == tup }
+    }
 }
 
 actor GitHubAPI {

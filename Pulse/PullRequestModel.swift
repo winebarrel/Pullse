@@ -49,6 +49,11 @@ class PullRequestModel: ObservableObject {
             if !newSettled.isEmpty {
                 notify(newSettled)
             }
+
+            if !pending.isEmpty {
+                let ids = pending.map { $0.id }
+                Notification.remove(ids: ids)
+            }
         } catch let githubError as GitHubError {
             error = githubError
             status = .error
