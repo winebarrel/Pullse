@@ -3,5 +3,8 @@
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard"
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": "true"
+  }
 }
