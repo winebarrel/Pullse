@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'mentioned' event on a given issue or pull request.
   static let MentionedEvent = ApolloAPI.Object(
     typename: "MentionedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

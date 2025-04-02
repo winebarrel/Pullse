@@ -5,5 +5,9 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents a GitHub Enterprise Importer (GEI) migration.
-  static let Migration = ApolloAPI.Interface(name: "Migration")
+  static let Migration = ApolloAPI.Interface(
+    name: "Migration",
+    keyFields: nil,
+    implementingObjects: ["RepositoryMigration"]
+  )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A poll for a discussion.
   static let DiscussionPoll = ApolloAPI.Object(
     typename: "DiscussionPoll",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

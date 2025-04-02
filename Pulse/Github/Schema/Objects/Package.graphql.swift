@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Information for an uploaded package.
   static let Package = ApolloAPI.Object(
     typename: "Package",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

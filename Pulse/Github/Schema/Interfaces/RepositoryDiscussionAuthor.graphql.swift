@@ -5,5 +5,12 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents an author of discussions in repositories.
-  static let RepositoryDiscussionAuthor = ApolloAPI.Interface(name: "RepositoryDiscussionAuthor")
+  static let RepositoryDiscussionAuthor = ApolloAPI.Interface(
+    name: "RepositoryDiscussionAuthor",
+    keyFields: nil,
+    implementingObjects: [
+      "Organization",
+      "User"
+    ]
+  )
 }

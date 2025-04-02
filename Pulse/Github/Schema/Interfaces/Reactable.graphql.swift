@@ -5,5 +5,21 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents a subject that can be reacted on.
-  static let Reactable = ApolloAPI.Interface(name: "Reactable")
+  static let Reactable = ApolloAPI.Interface(
+    name: "Reactable",
+    keyFields: nil,
+    implementingObjects: [
+      "CommitComment",
+      "Discussion",
+      "DiscussionComment",
+      "Issue",
+      "IssueComment",
+      "PullRequest",
+      "PullRequestReview",
+      "PullRequestReviewComment",
+      "Release",
+      "TeamDiscussion",
+      "TeamDiscussionComment"
+    ]
+  )
 }

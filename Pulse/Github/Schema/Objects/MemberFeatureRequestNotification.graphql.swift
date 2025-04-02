@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a member feature request notification
   static let MemberFeatureRequestNotification = ApolloAPI.Object(
     typename: "MemberFeatureRequestNotification",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

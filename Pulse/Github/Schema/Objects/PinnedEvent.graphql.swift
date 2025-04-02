@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'pinned' event on a given issue or pull request.
   static let PinnedEvent = ApolloAPI.Object(
     typename: "PinnedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

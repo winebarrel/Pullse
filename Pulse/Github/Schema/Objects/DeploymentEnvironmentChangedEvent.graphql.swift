@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'deployment_environment_changed' event on a given pull request.
   static let DeploymentEnvironmentChangedEvent = ApolloAPI.Object(
     typename: "DeploymentEnvironmentChangedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

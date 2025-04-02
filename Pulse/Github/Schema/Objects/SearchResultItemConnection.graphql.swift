@@ -9,6 +9,7 @@ extension Github.Objects {
   /// potentially split across many pages.
   static let SearchResultItemConnection = ApolloAPI.Object(
     typename: "SearchResultItemConnection",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

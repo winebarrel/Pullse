@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents an 'unsubscribed' event on a given `Subscribable`.
   static let UnsubscribedEvent = ApolloAPI.Object(
     typename: "UnsubscribedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

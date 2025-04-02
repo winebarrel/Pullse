@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An Enterprise Server installation.
   static let EnterpriseServerInstallation = ApolloAPI.Object(
     typename: "EnterpriseServerInstallation",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

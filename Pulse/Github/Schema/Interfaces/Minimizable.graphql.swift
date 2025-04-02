@@ -5,5 +5,16 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Entities that can be minimized.
-  static let Minimizable = ApolloAPI.Interface(name: "Minimizable")
+  static let Minimizable = ApolloAPI.Interface(
+    name: "Minimizable",
+    keyFields: nil,
+    implementingObjects: [
+      "CommitComment",
+      "DiscussionComment",
+      "GistComment",
+      "IssueComment",
+      "PullRequestReview",
+      "PullRequestReviewComment"
+    ]
+  )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An event related to sponsorship activity.
   static let SponsorsActivity = ApolloAPI.Object(
     typename: "SponsorsActivity",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A repository ruleset.
   static let RepositoryRuleset = ApolloAPI.Object(
     typename: "RepositoryRuleset",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

@@ -5,5 +5,14 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents a Git object.
-  static let GitObject = ApolloAPI.Interface(name: "GitObject")
+  static let GitObject = ApolloAPI.Interface(
+    name: "GitObject",
+    keyFields: nil,
+    implementingObjects: [
+      "Blob",
+      "Commit",
+      "Tag",
+      "Tree"
+    ]
+  )
 }

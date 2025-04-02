@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A threaded list of comments for a given pull request.
   static let PullRequestThread = ApolloAPI.Object(
     typename: "PullRequestThread",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

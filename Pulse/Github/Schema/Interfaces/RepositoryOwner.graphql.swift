@@ -5,5 +5,12 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents an owner of a Repository.
-  static let RepositoryOwner = ApolloAPI.Interface(name: "RepositoryOwner")
+  static let RepositoryOwner = ApolloAPI.Interface(
+    name: "RepositoryOwner",
+    keyFields: nil,
+    implementingObjects: [
+      "Organization",
+      "User"
+    ]
+  )
 }

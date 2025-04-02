@@ -20,6 +20,7 @@ extension Github.Objects {
       Github.Interfaces.RepositoryOwner.self,
       Github.Interfaces.Sponsorable.self,
       Github.Interfaces.UniformResourceLocatable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

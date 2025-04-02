@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Dependency manifest for a repository
   static let DependencyGraphManifest = ApolloAPI.Object(
     typename: "DependencyGraphManifest",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

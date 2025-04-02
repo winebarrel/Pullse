@@ -11,6 +11,7 @@ extension Github.Objects {
       Github.Interfaces.MemberStatusable.self,
       Github.Interfaces.Node.self,
       Github.Interfaces.Subscribable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

@@ -100,6 +100,10 @@ extension Github {
       case "IssueComment": return Github.Objects.IssueComment
       case "IssueCommentConnection": return Github.Objects.IssueCommentConnection
       case "IssueCommentEdge": return Github.Objects.IssueCommentEdge
+      case "IssueType": return Github.Objects.IssueType
+      case "IssueTypeAddedEvent": return Github.Objects.IssueTypeAddedEvent
+      case "IssueTypeChangedEvent": return Github.Objects.IssueTypeChangedEvent
+      case "IssueTypeRemovedEvent": return Github.Objects.IssueTypeRemovedEvent
       case "Label": return Github.Objects.Label
       case "LabeledEvent": return Github.Objects.LabeledEvent
       case "Language": return Github.Objects.Language
@@ -163,6 +167,8 @@ extension Github {
       case "PackageFile": return Github.Objects.PackageFile
       case "PackageTag": return Github.Objects.PackageTag
       case "PackageVersion": return Github.Objects.PackageVersion
+      case "ParentIssueAddedEvent": return Github.Objects.ParentIssueAddedEvent
+      case "ParentIssueRemovedEvent": return Github.Objects.ParentIssueRemovedEvent
       case "PinnedDiscussion": return Github.Objects.PinnedDiscussion
       case "PinnedEnvironment": return Github.Objects.PinnedEnvironment
       case "PinnedEvent": return Github.Objects.PinnedEvent
@@ -255,6 +261,8 @@ extension Github {
       case "Status": return Github.Objects.Status
       case "StatusCheckRollup": return Github.Objects.StatusCheckRollup
       case "StatusContext": return Github.Objects.StatusContext
+      case "SubIssueAddedEvent": return Github.Objects.SubIssueAddedEvent
+      case "SubIssueRemovedEvent": return Github.Objects.SubIssueRemovedEvent
       case "SubscribedEvent": return Github.Objects.SubscribedEvent
       case "Tag": return Github.Objects.Tag
       case "Team": return Github.Objects.Team
@@ -278,6 +286,7 @@ extension Github {
       case "UserBlockedEvent": return Github.Objects.UserBlockedEvent
       case "UserContentEdit": return Github.Objects.UserContentEdit
       case "UserList": return Github.Objects.UserList
+      case "UserNamespaceRepository": return Github.Objects.UserNamespaceRepository
       case "UserStatus": return Github.Objects.UserStatus
       case "VerifiableDomain": return Github.Objects.VerifiableDomain
       case "Workflow": return Github.Objects.Workflow

@@ -5,5 +5,23 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Entities that can be updated.
-  static let Updatable = ApolloAPI.Interface(name: "Updatable")
+  static let Updatable = ApolloAPI.Interface(
+    name: "Updatable",
+    keyFields: nil,
+    implementingObjects: [
+      "CommitComment",
+      "Discussion",
+      "DiscussionComment",
+      "GistComment",
+      "Issue",
+      "IssueComment",
+      "Project",
+      "ProjectV2",
+      "PullRequest",
+      "PullRequestReview",
+      "PullRequestReviewComment",
+      "TeamDiscussion",
+      "TeamDiscussionComment"
+    ]
+  )
 }

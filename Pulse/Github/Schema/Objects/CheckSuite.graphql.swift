@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A check suite.
   static let CheckSuite = ApolloAPI.Object(
     typename: "CheckSuite",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

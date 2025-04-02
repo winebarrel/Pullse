@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Describes the status of a given deployment attempt.
   static let DeploymentStatus = ApolloAPI.Object(
     typename: "DeploymentStatus",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

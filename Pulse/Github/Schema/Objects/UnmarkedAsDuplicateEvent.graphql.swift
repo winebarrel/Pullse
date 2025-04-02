@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents an 'unmarked_as_duplicate' event on a given issue or pull request.
   static let UnmarkedAsDuplicateEvent = ApolloAPI.Object(
     typename: "UnmarkedAsDuplicateEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

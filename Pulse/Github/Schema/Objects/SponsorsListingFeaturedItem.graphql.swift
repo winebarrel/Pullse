@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A record that is promoted on a GitHub Sponsors profile.
   static let SponsorsListingFeaturedItem = ApolloAPI.Object(
     typename: "SponsorsListingFeaturedItem",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

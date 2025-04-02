@@ -5,5 +5,14 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents an owner of a project.
-  static let ProjectV2Owner = ApolloAPI.Interface(name: "ProjectV2Owner")
+  static let ProjectV2Owner = ApolloAPI.Interface(
+    name: "ProjectV2Owner",
+    keyFields: nil,
+    implementingObjects: [
+      "Issue",
+      "Organization",
+      "PullRequest",
+      "User"
+    ]
+  )
 }

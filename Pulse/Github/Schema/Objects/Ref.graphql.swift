@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a Git reference.
   static let Ref = ApolloAPI.Object(
     typename: "Ref",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

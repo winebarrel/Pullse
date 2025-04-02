@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'referenced' event on a given `ReferencedSubject`.
   static let ReferencedEvent = ApolloAPI.Object(
     typename: "ReferencedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

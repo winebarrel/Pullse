@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An environment.
   static let Environment = ApolloAPI.Object(
     typename: "Environment",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

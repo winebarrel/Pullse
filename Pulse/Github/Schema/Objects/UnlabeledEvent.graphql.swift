@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents an 'unlabeled' event on a given issue or pull request.
   static let UnlabeledEvent = ApolloAPI.Object(
     typename: "UnlabeledEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

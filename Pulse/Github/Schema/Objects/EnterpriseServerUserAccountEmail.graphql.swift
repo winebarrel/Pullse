@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An email belonging to a user account on an Enterprise Server installation.
   static let EnterpriseServerUserAccountEmail = ApolloAPI.Object(
     typename: "EnterpriseServerUserAccountEmail",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

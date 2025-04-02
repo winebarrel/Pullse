@@ -5,5 +5,12 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// A subject that may be upvoted.
-  static let Votable = ApolloAPI.Interface(name: "Votable")
+  static let Votable = ApolloAPI.Interface(
+    name: "Votable",
+    keyFields: nil,
+    implementingObjects: [
+      "Discussion",
+      "DiscussionComment"
+    ]
+  )
 }

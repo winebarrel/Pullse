@@ -7,6 +7,7 @@ extension Github.Objects {
   /// The connection type for PullRequestCommit.
   static let PullRequestCommitConnection = ApolloAPI.Object(
     typename: "PullRequestCommitConnection",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

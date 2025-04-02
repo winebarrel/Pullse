@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A status update within a project.
   static let ProjectV2StatusUpdate = ApolloAPI.Object(
     typename: "ProjectV2StatusUpdate",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

@@ -9,6 +9,7 @@ extension Github.Objects {
   /// (classic) with read:enterprise or admin:enterprise scope.
   static let EnterpriseIdentityProvider = ApolloAPI.Object(
     typename: "EnterpriseIdentityProvider",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

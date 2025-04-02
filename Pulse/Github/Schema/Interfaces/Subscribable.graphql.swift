@@ -5,5 +5,17 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Entities that can be subscribed to for web and email notifications.
-  static let Subscribable = ApolloAPI.Interface(name: "Subscribable")
+  static let Subscribable = ApolloAPI.Interface(
+    name: "Subscribable",
+    keyFields: nil,
+    implementingObjects: [
+      "Commit",
+      "Discussion",
+      "Issue",
+      "PullRequest",
+      "Repository",
+      "Team",
+      "TeamDiscussion"
+    ]
+  )
 }

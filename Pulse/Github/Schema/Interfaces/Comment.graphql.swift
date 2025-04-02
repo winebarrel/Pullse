@@ -5,5 +5,21 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Represents a comment.
-  static let Comment = ApolloAPI.Interface(name: "Comment")
+  static let Comment = ApolloAPI.Interface(
+    name: "Comment",
+    keyFields: nil,
+    implementingObjects: [
+      "CommitComment",
+      "Discussion",
+      "DiscussionComment",
+      "GistComment",
+      "Issue",
+      "IssueComment",
+      "PullRequest",
+      "PullRequestReview",
+      "PullRequestReviewComment",
+      "TeamDiscussion",
+      "TeamDiscussionComment"
+    ]
+  )
 }

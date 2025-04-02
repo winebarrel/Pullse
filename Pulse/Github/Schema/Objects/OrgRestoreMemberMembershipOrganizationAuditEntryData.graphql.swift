@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Metadata for an organization membership for org.restore_member actions
   static let OrgRestoreMemberMembershipOrganizationAuditEntryData = ApolloAPI.Object(
     typename: "OrgRestoreMemberMembershipOrganizationAuditEntryData",
-    implementedInterfaces: [Github.Interfaces.OrganizationAuditEntryData.self]
+    implementedInterfaces: [Github.Interfaces.OrganizationAuditEntryData.self],
+    keyFields: nil
   )
 }

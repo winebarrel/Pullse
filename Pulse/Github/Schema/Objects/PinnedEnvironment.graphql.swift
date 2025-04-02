@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a pinned environment on a given repository
   static let PinnedEnvironment = ApolloAPI.Object(
     typename: "PinnedEnvironment",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

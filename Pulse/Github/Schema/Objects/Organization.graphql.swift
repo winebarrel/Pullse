@@ -9,7 +9,7 @@ extension Github.Objects {
     typename: "Organization",
     implementedInterfaces: [
       Github.Interfaces.Actor.self,
-      Github.Interfaces.AnnouncementBanner.self,
+      Github.Interfaces.AnnouncementBannerI.self,
       Github.Interfaces.MemberStatusable.self,
       Github.Interfaces.Node.self,
       Github.Interfaces.PackageOwner.self,
@@ -22,6 +22,7 @@ extension Github.Objects {
       Github.Interfaces.RepositoryOwner.self,
       Github.Interfaces.Sponsorable.self,
       Github.Interfaces.UniformResourceLocatable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

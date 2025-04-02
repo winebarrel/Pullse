@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A Git push.
   static let Push = ApolloAPI.Object(
     typename: "Push",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

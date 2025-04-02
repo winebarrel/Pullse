@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Information about a specific package version.
   static let PackageVersion = ApolloAPI.Object(
     typename: "PackageVersion",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

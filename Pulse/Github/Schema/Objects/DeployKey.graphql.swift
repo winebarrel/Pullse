@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A repository deploy key.
   static let DeployKey = ApolloAPI.Object(
     typename: "DeployKey",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

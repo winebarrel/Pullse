@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An Invitation for a user to an organization.
   static let OrganizationInvitation = ApolloAPI.Object(
     typename: "OrganizationInvitation",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

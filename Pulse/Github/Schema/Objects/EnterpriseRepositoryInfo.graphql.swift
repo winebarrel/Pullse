@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A subset of repository information queryable from an enterprise.
   static let EnterpriseRepositoryInfo = ApolloAPI.Object(
     typename: "EnterpriseRepositoryInfo",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

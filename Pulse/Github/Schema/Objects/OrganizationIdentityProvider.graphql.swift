@@ -10,6 +10,7 @@ extension Github.Objects {
   /// App with an installation token with read or write access to members.
   static let OrganizationIdentityProvider = ApolloAPI.Object(
     typename: "OrganizationIdentityProvider",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

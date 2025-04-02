@@ -5,5 +5,12 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Entities that can sponsor or be sponsored through GitHub Sponsors.
-  static let Sponsorable = ApolloAPI.Interface(name: "Sponsorable")
+  static let Sponsorable = ApolloAPI.Interface(
+    name: "Sponsorable",
+    keyFields: nil,
+    implementingObjects: [
+      "Organization",
+      "User"
+    ]
+  )
 }

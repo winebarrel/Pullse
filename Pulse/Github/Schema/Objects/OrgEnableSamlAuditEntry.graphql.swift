@@ -11,6 +11,7 @@ extension Github.Objects {
       Github.Interfaces.AuditEntry.self,
       Github.Interfaces.Node.self,
       Github.Interfaces.OrganizationAuditEntryData.self
-    ]
+    ],
+    keyFields: nil
   )
 }

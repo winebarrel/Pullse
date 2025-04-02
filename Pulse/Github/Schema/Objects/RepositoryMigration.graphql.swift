@@ -10,6 +10,7 @@ extension Github.Objects {
     implementedInterfaces: [
       Github.Interfaces.Migration.self,
       Github.Interfaces.Node.self
-    ]
+    ],
+    keyFields: nil
   )
 }

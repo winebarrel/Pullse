@@ -5,5 +5,18 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Metadata for an audit entry containing enterprise account information.
-  static let EnterpriseAuditEntryData = ApolloAPI.Interface(name: "EnterpriseAuditEntryData")
+  static let EnterpriseAuditEntryData = ApolloAPI.Interface(
+    name: "EnterpriseAuditEntryData",
+    keyFields: nil,
+    implementingObjects: [
+      "MembersCanDeleteReposClearAuditEntry",
+      "MembersCanDeleteReposDisableAuditEntry",
+      "MembersCanDeleteReposEnableAuditEntry",
+      "OrgInviteToBusinessAuditEntry",
+      "PrivateRepositoryForkingDisableAuditEntry",
+      "PrivateRepositoryForkingEnableAuditEntry",
+      "RepositoryVisibilityChangeDisableAuditEntry",
+      "RepositoryVisibilityChangeEnableAuditEntry"
+    ]
+  )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A GitHub Enterprise Importer (GEI) migration source.
   static let MigrationSource = ApolloAPI.Object(
     typename: "MigrationSource",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }
