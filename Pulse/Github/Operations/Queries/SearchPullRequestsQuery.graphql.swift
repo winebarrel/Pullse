@@ -8,7 +8,7 @@ extension Github {
     static let operationName: String = "SearchPullRequests"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt comments(last: 1) { __typename edges { __typename node { __typename url createdAt } } } reviews(last: 1) { __typename edges { __typename node { __typename url createdAt } } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } approvedReviews: reviews(states: APPROVED) { __typename totalCount } } } } }"#
+        #"query SearchPullRequests($query: String!) { search(type: ISSUE, last: 100, query: $query) { __typename nodes { __typename ... on PullRequest { repository { __typename name owner { __typename login } } title url reviewDecision mergeable isDraft updatedAt number comments(last: 1) { __typename edges { __typename node { __typename url createdAt } } } reviews(last: 1) { __typename edges { __typename node { __typename url createdAt } } } commits(last: 1) { __typename nodes { __typename commit { __typename url statusCheckRollup { __typename state } } } } approvedReviews: reviews(states: APPROVED) { __typename totalCount } } } } }"#
       ))
 
     public var query: String
@@ -83,6 +83,7 @@ extension Github {
               .field("mergeable", GraphQLEnum<Github.MergeableState>.self),
               .field("isDraft", Bool.self),
               .field("updatedAt", Github.DateTime.self),
+              .field("number", Int.self),
               .field("comments", Comments.self, arguments: ["last": 1]),
               .field("reviews", Reviews?.self, arguments: ["last": 1]),
               .field("commits", Commits.self, arguments: ["last": 1]),
@@ -103,6 +104,8 @@ extension Github {
             var isDraft: Bool { __data["isDraft"] }
             /// Identifies the date and time when the object was last updated.
             var updatedAt: Github.DateTime { __data["updatedAt"] }
+            /// Identifies the pull request number.
+            var number: Int { __data["number"] }
             /// A list of comments associated with the pull request.
             var comments: Comments { __data["comments"] }
             /// A list of reviews associated with the pull request.

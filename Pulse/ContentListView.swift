@@ -29,9 +29,13 @@ struct ContentListView: View {
         } else {
             List(pulls) { pull in
                 VStack(alignment: .leading) {
-                    Text("\(pull.owner)/\(pull.repo)")
-                        .font(.caption2)
-                        .multilineTextAlignment(.leading)
+                    HStack(spacing: 0) {
+                        Text("\(pull.owner)/\(pull.repo)")
+                        Text("#" + String(pull.number))
+                            .foregroundStyle(.secondary)
+                    }
+                    .font(.caption2)
+                    .multilineTextAlignment(.leading)
                     Link(destination: URL(string: pull.latestUrl)!) {
                         if pull.draft {
                             Text("Draft")
