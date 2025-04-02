@@ -14,6 +14,7 @@ extension Github.Objects {
       Github.Interfaces.Node.self,
       Github.Interfaces.Updatable.self,
       Github.Interfaces.UpdatableComment.self
-    ]
+    ],
+    keyFields: nil
   )
 }

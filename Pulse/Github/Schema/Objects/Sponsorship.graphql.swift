@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A sponsorship relationship between a sponsor and a maintainer
   static let Sponsorship = ApolloAPI.Object(
     typename: "Sponsorship",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

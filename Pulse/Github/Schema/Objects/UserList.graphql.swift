@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A user-curated list of repositories
   static let UserList = ApolloAPI.Object(
     typename: "UserList",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

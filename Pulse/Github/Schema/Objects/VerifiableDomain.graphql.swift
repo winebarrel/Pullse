@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A domain that can be verified or approved for an organization or an enterprise.
   static let VerifiableDomain = ApolloAPI.Object(
     typename: "VerifiableDomain",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

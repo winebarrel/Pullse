@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents an 'assigned' event on any assignable object.
   static let AssignedEvent = ApolloAPI.Object(
     typename: "AssignedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

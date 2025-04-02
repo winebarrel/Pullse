@@ -5,5 +5,9 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// A subset of repository info.
-  static let RepositoryInfo = ApolloAPI.Interface(name: "RepositoryInfo")
+  static let RepositoryInfo = ApolloAPI.Interface(
+    name: "RepositoryInfo",
+    keyFields: nil,
+    implementingObjects: ["Repository"]
+  )
 }

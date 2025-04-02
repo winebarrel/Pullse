@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A branch protection rule.
   static let BranchProtectionRule = ApolloAPI.Object(
     typename: "BranchProtectionRule",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

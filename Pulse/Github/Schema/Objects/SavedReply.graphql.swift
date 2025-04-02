@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A Saved Reply is text a user can use to reply quickly.
   static let SavedReply = ApolloAPI.Object(
     typename: "SavedReply",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

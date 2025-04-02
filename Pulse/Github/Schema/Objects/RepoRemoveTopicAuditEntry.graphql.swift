@@ -13,6 +13,7 @@ extension Github.Objects {
       Github.Interfaces.OrganizationAuditEntryData.self,
       Github.Interfaces.RepositoryAuditEntryData.self,
       Github.Interfaces.TopicAuditEntryData.self
-    ]
+    ],
+    keyFields: nil
   )
 }

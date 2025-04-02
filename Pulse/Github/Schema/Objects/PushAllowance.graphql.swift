@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A team, user, or app who has the ability to push to a protected branch.
   static let PushAllowance = ApolloAPI.Object(
     typename: "PushAllowance",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

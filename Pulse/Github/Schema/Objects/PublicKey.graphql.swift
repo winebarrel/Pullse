@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A user's public key.
   static let PublicKey = ApolloAPI.Object(
     typename: "PublicKey",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

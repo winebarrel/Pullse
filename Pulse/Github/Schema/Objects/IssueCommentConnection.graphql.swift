@@ -7,6 +7,7 @@ extension Github.Objects {
   /// The connection type for IssueComment.
   static let IssueCommentConnection = ApolloAPI.Object(
     typename: "IssueCommentConnection",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

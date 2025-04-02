@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An edit on user content
   static let UserContentEdit = ApolloAPI.Object(
     typename: "UserContentEdit",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

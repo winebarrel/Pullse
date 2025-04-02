@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents triggered deployment instance.
   static let Deployment = ApolloAPI.Object(
     typename: "Deployment",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

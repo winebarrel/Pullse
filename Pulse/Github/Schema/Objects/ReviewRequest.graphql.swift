@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A request for a user to review a pull request.
   static let ReviewRequest = ApolloAPI.Object(
     typename: "ReviewRequest",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

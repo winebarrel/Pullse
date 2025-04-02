@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A team or app that has the ability to bypass a rules defined on a ruleset
   static let RepositoryRulesetBypassActor = ApolloAPI.Object(
     typename: "RepositoryRulesetBypassActor",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

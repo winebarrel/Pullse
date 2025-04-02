@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An edge in a connection.
   static let IssueCommentEdge = ApolloAPI.Object(
     typename: "IssueCommentEdge",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

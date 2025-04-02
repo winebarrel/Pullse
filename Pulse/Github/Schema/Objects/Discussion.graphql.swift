@@ -19,6 +19,7 @@ extension Github.Objects {
       Github.Interfaces.Subscribable.self,
       Github.Interfaces.Updatable.self,
       Github.Interfaces.Votable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

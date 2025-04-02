@@ -16,6 +16,7 @@ extension Github.Objects {
       Github.Interfaces.Updatable.self,
       Github.Interfaces.UpdatableComment.self,
       Github.Interfaces.Votable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

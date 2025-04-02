@@ -13,6 +13,7 @@ extension Github.Objects {
   /// access tokens (classic) with read:enterprise or admin:enterprise scope.
   static let ExternalIdentity = ApolloAPI.Object(
     typename: "ExternalIdentity",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

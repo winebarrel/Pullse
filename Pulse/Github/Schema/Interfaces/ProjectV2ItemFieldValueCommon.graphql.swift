@@ -5,5 +5,15 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Common fields across different project field value types
-  static let ProjectV2ItemFieldValueCommon = ApolloAPI.Interface(name: "ProjectV2ItemFieldValueCommon")
+  static let ProjectV2ItemFieldValueCommon = ApolloAPI.Interface(
+    name: "ProjectV2ItemFieldValueCommon",
+    keyFields: nil,
+    implementingObjects: [
+      "ProjectV2ItemFieldDateValue",
+      "ProjectV2ItemFieldIterationValue",
+      "ProjectV2ItemFieldNumberValue",
+      "ProjectV2ItemFieldSingleSelectValue",
+      "ProjectV2ItemFieldTextValue"
+    ]
+  )
 }

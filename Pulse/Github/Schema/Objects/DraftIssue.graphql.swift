@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A draft issue within a project.
   static let DraftIssue = ApolloAPI.Object(
     typename: "DraftIssue",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

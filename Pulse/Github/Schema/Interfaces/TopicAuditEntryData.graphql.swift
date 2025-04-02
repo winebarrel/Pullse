@@ -5,5 +5,12 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Metadata for an audit entry with a topic.
-  static let TopicAuditEntryData = ApolloAPI.Interface(name: "TopicAuditEntryData")
+  static let TopicAuditEntryData = ApolloAPI.Interface(
+    name: "TopicAuditEntryData",
+    keyFields: nil,
+    implementingObjects: [
+      "RepoAddTopicAuditEntry",
+      "RepoRemoveTopicAuditEntry"
+    ]
+  )
 }

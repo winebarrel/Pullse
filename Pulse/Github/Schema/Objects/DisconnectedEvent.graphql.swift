@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'disconnected' event on a given issue or pull request.
   static let DisconnectedEvent = ApolloAPI.Object(
     typename: "DisconnectedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

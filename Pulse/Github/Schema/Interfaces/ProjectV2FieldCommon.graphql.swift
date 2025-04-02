@@ -5,5 +5,13 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Common fields across different project field types
-  static let ProjectV2FieldCommon = ApolloAPI.Interface(name: "ProjectV2FieldCommon")
+  static let ProjectV2FieldCommon = ApolloAPI.Interface(
+    name: "ProjectV2FieldCommon",
+    keyFields: nil,
+    implementingObjects: [
+      "ProjectV2Field",
+      "ProjectV2IterationField",
+      "ProjectV2SingleSelectField"
+    ]
+  )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A file in a package version.
   static let PackageFile = ApolloAPI.Object(
     typename: "PackageFile",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

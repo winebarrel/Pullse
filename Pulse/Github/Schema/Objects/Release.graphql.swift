@@ -11,6 +11,7 @@ extension Github.Objects {
       Github.Interfaces.Node.self,
       Github.Interfaces.Reactable.self,
       Github.Interfaces.UniformResourceLocatable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

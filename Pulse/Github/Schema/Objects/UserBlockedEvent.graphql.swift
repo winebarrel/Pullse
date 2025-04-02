@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'user_blocked' event on a given user.
   static let UserBlockedEvent = ApolloAPI.Object(
     typename: "UserBlockedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

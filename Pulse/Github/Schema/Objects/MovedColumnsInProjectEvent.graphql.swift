@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a 'moved_columns_in_project' event on a given issue or pull request.
   static let MovedColumnsInProjectEvent = ApolloAPI.Object(
     typename: "MovedColumnsInProjectEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

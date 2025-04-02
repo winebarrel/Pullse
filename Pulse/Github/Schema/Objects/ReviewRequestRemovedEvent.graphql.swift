@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents an 'review_request_removed' event on a given pull request.
   static let ReviewRequestRemovedEvent = ApolloAPI.Object(
     typename: "ReviewRequestRemovedEvent",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A version tag contains the mapping between a tag name and a version.
   static let PackageTag = ApolloAPI.Object(
     typename: "PackageTag",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

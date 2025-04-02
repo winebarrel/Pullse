@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a given language found in repositories.
   static let Language = ApolloAPI.Object(
     typename: "Language",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

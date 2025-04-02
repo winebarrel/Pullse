@@ -16,6 +16,7 @@ extension Github.Objects {
       Github.Interfaces.Starrable.self,
       Github.Interfaces.Subscribable.self,
       Github.Interfaces.UniformResourceLocatable.self
-    ]
+    ],
+    keyFields: nil
   )
 }

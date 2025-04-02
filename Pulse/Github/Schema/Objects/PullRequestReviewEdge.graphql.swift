@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An edge in a connection.
   static let PullRequestReviewEdge = ApolloAPI.Object(
     typename: "PullRequestReviewEdge",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

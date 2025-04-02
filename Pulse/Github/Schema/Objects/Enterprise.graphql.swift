@@ -8,8 +8,9 @@ extension Github.Objects {
   static let Enterprise = ApolloAPI.Object(
     typename: "Enterprise",
     implementedInterfaces: [
-      Github.Interfaces.AnnouncementBanner.self,
+      Github.Interfaces.AnnouncementBannerI.self,
       Github.Interfaces.Node.self
-    ]
+    ],
+    keyFields: nil
   )
 }

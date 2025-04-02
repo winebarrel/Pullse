@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A repository's open source license
   static let License = ApolloAPI.Object(
     typename: "License",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

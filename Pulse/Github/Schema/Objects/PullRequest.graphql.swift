@@ -21,6 +21,7 @@ extension Github.Objects {
       Github.Interfaces.UniformResourceLocatable.self,
       Github.Interfaces.Updatable.self,
       Github.Interfaces.UpdatableComment.self
-    ]
+    ],
+    keyFields: nil
   )
 }

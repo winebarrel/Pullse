@@ -7,6 +7,7 @@ extension Github.Objects {
   /// An emoji reaction to a particular piece of content.
   static let Reaction = ApolloAPI.Object(
     typename: "Reaction",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

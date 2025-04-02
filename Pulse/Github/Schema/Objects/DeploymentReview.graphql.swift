@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A deployment review.
   static let DeploymentReview = ApolloAPI.Object(
     typename: "DeploymentReview",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

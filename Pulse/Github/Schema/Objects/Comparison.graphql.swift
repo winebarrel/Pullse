@@ -7,6 +7,7 @@ extension Github.Objects {
   /// Represents a comparison between two commit revisions.
   static let Comparison = ApolloAPI.Object(
     typename: "Comparison",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

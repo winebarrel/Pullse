@@ -5,5 +5,13 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Recent projects for the owner.
-  static let ProjectV2Recent = ApolloAPI.Interface(name: "ProjectV2Recent")
+  static let ProjectV2Recent = ApolloAPI.Interface(
+    name: "ProjectV2Recent",
+    keyFields: nil,
+    implementingObjects: [
+      "Organization",
+      "Repository",
+      "User"
+    ]
+  )
 }

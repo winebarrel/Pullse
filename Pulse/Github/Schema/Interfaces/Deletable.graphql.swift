@@ -5,5 +5,20 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Entities that can be deleted.
-  static let Deletable = ApolloAPI.Interface(name: "Deletable")
+  static let Deletable = ApolloAPI.Interface(
+    name: "Deletable",
+    keyFields: nil,
+    implementingObjects: [
+      "CommitComment",
+      "Discussion",
+      "DiscussionComment",
+      "GistComment",
+      "Issue",
+      "IssueComment",
+      "PullRequestReview",
+      "PullRequestReviewComment",
+      "TeamDiscussion",
+      "TeamDiscussionComment"
+    ]
+  )
 }

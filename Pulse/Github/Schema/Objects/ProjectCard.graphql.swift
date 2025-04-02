@@ -7,6 +7,7 @@ extension Github.Objects {
   /// A card in a project.
   static let ProjectCard = ApolloAPI.Object(
     typename: "ProjectCard",
-    implementedInterfaces: [Github.Interfaces.Node.self]
+    implementedInterfaces: [Github.Interfaces.Node.self],
+    keyFields: nil
   )
 }

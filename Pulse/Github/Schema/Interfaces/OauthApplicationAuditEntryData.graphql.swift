@@ -5,5 +5,16 @@ import ApolloAPI
 
 extension Github.Interfaces {
   /// Metadata for an audit entry with action oauth_application.*
-  static let OauthApplicationAuditEntryData = ApolloAPI.Interface(name: "OauthApplicationAuditEntryData")
+  static let OauthApplicationAuditEntryData = ApolloAPI.Interface(
+    name: "OauthApplicationAuditEntryData",
+    keyFields: nil,
+    implementingObjects: [
+      "OauthApplicationCreateAuditEntry",
+      "OrgOauthAppAccessApprovedAuditEntry",
+      "OrgOauthAppAccessBlockedAuditEntry",
+      "OrgOauthAppAccessDeniedAuditEntry",
+      "OrgOauthAppAccessRequestedAuditEntry",
+      "OrgOauthAppAccessUnblockedAuditEntry"
+    ]
+  )
 }
