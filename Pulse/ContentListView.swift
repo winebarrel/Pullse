@@ -72,7 +72,21 @@ struct ContentListView: View {
                         }
                     }
                 }
+                .contextMenu {
+                    Button("Copy") {
+                        copyToClipboard("""
+                        \(pull.title)
+                        \(pull.url)
+                        """)
+                    }
+                }
             }
         }
+    }
+
+    private func copyToClipboard(_ text: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
     }
 }
