@@ -70,7 +70,7 @@ class PullRequestModel: ObservableObject {
             Task {
                 await Notification.notify(
                     id: pull.id,
-                    title: "\(pull.owner)/\(pull.repo)",
+                    title: "\(pull.owner)/\(pull.repo) #\(pull.number)",
                     body: pull.statusEmoji + pull.title,
                     url: pull.latestUrl
                 )
