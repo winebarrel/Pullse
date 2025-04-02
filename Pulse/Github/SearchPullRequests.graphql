@@ -14,6 +14,7 @@ query SearchPullRequests($query: String!) {
         mergeable
         isDraft
         updatedAt
+        number
         comments(last: 1) {
           edges {
             node {

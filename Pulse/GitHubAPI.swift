@@ -14,6 +14,7 @@ struct PullRequest: Identifiable {
     let reviewResult: ReviewResult
     let checkResult: CheckResult
     let updatedAt: Date
+    let number: Int
 
     var id: String {
         url
@@ -163,7 +164,8 @@ actor GitHubAPI {
                             approvedCount: asPull.approvedReviews?.totalCount ?? 0,
                             reviewResult: reviewResult,
                             checkResult: checkResult,
-                            updatedAt: updatedAt
+                            updatedAt: updatedAt,
+                            number: asPull.number
                         )
 
                         pulls.append(pull)
