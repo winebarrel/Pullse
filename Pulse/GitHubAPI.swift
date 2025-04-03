@@ -46,6 +46,14 @@ struct PullRequest: Identifiable {
         case failure
         case pending
     }
+
+    var titleAndURL: String {
+        "[\(owner)/\(repo) #\(number)] \(title)\n\(url)\n"
+    }
+
+    var markdown: String {
+        "[[\(owner)/\(repo) #\(number)] \(title)](\(url))"
+    }
 }
 
 typealias PullRequests = [PullRequest]
