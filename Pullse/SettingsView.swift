@@ -66,7 +66,7 @@ struct SettingView: View {
                         Logger.shared.error("failed to update 'Launch at login': \(error)")
                     }
                 }
-            Link(destination: URL(string: "https://github.com/winebarrel/Pulse")!) {
+            Link(destination: URL(string: "https://github.com/winebarrel/Pullse")!) {
                 // swiftlint:disable force_cast
                 let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
                 // swiftlint:enable force_cast
@@ -81,7 +81,7 @@ struct SettingView: View {
 
     func onClosed(_ action: @escaping () -> Void) -> some View {
         onReceive(NotificationCenter.default.publisher(for: NSWindow.willCloseNotification)) { notification in
-            if let window = notification.object as? NSWindow, window.title == "Pulse Settings" {
+            if let window = notification.object as? NSWindow, window.title == "Pullse Settings" {
                 action()
             }
         }

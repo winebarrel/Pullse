@@ -8,4 +8,4 @@ analyzer_rules:
   - unused_declaration
   - unused_import
 excluded:
-  - Pulse/Github/
+  - Pullse/Github/

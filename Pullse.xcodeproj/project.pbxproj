@@ -14,13 +14,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD1FD5302CE9BF0100508A20 /* Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD1FD5302CE9BF0100508A20 /* Pullse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pullse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		AD1FD5322CE9BF0100508A20 /* Pulse */ = {
+		AD1FD5322CE9BF0100508A20 /* Pullse */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Pulse;
+			path = Pullse;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -43,8 +43,7 @@
 		AD1FD5272CE9BF0100508A20 = {
 			isa = PBXGroup;
 			children = (
-				AD1FD5322CE9BF0100508A20 /* Pulse */,
-				AD5C7B652CE9D97C007D5B2C /* Frameworks */,
+				AD1FD5322CE9BF0100508A20 /* Pullse */,
 				AD1FD5312CE9BF0100508A20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,24 +51,17 @@
 		AD1FD5312CE9BF0100508A20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD1FD5302CE9BF0100508A20 /* Pulse.app */,
+				AD1FD5302CE9BF0100508A20 /* Pullse.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		AD5C7B652CE9D97C007D5B2C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD1FD52F2CE9BF0100508A20 /* Pulse */ = {
+		AD1FD52F2CE9BF0100508A20 /* Pullse */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD1FD53F2CE9BF0200508A20 /* Build configuration list for PBXNativeTarget "Pulse" */;
+			buildConfigurationList = AD1FD53F2CE9BF0200508A20 /* Build configuration list for PBXNativeTarget "Pullse" */;
 			buildPhases = (
 				AD1FD52C2CE9BF0100508A20 /* Sources */,
 				AD1FD52D2CE9BF0100508A20 /* Frameworks */,
@@ -81,17 +73,17 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				AD1FD5322CE9BF0100508A20 /* Pulse */,
+				AD1FD5322CE9BF0100508A20 /* Pullse */,
 			);
-			name = Pulse;
+			name = Pullse;
 			packageProductDependencies = (
 				AD6515422CE9C73600BCC336 /* Valet */,
 				AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */,
 				AD6515482CE9C76000BCC336 /* AsyncAlgorithms */,
 				AD5C7B662CE9D97C007D5B2C /* Apollo */,
 			);
-			productName = Pulse;
-			productReference = AD1FD5302CE9BF0100508A20 /* Pulse.app */;
+			productName = Pullse;
+			productReference = AD1FD5302CE9BF0100508A20 /* Pullse.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -109,7 +101,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AD1FD52B2CE9BF0100508A20 /* Build configuration list for PBXProject "Pulse" */;
+			buildConfigurationList = AD1FD52B2CE9BF0100508A20 /* Build configuration list for PBXProject "Pullse" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -129,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD1FD52F2CE9BF0100508A20 /* Pulse */,
+				AD1FD52F2CE9BF0100508A20 /* Pullse */,
 			);
 		};
 /* End PBXProject section */
@@ -304,12 +296,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Pulse/Pulse.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Pullse/Pullse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.2.0;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Pullse/Preview Content\"";
 				DEVELOPMENT_TEAM = 97A8B2WE2P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -322,7 +314,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 2.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.winebarrel.Pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.winebarrel.Pullse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -334,12 +326,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Pulse/Pulse.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Pullse/Pullse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.2.0;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Pullse/Preview Content\"";
 				DEVELOPMENT_TEAM = 97A8B2WE2P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -352,7 +344,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 2.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.winebarrel.Pulse;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.winebarrel.Pullse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -362,7 +354,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD1FD52B2CE9BF0100508A20 /* Build configuration list for PBXProject "Pulse" */ = {
+		AD1FD52B2CE9BF0100508A20 /* Build configuration list for PBXProject "Pullse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD1FD53D2CE9BF0200508A20 /* Debug */,
@@ -371,7 +363,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD1FD53F2CE9BF0200508A20 /* Build configuration list for PBXNativeTarget "Pulse" */ = {
+		AD1FD53F2CE9BF0200508A20 /* Build configuration list for PBXNativeTarget "Pullse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD1FD5402CE9BF0200508A20 /* Debug */,
