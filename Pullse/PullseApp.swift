@@ -3,11 +3,11 @@ import MenuBarExtraAccess
 import SwiftUI
 
 @main
-struct PulseApp: App {
+struct PullseApp: App {
     @State private var initialized = false
     @State private var isMenuPresented = false
     @State private var timer: Task<Void, Never>?
-    // NOTE: Define "githubToken" in PulseApp so that values are not lost during sleep.
+    // NOTE: Define "githubToken" in PullseApp so that values are not lost during sleep.
     @State private var githubToken = Vault.githubToken
     @AppStorage("interval") private var interval = Constants.defaultInterval
     @StateObject private var pullRequest = PullRequestModel()

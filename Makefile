@@ -1,5 +1,5 @@
 BUILD_DIR     = ./build
-APP_NAME      = Pulse
+APP_NAME      = Pullse
 ARCHIVE_PATH  = $(BUILD_DIR)/$(APP_NAME).xcarchive
 CONFIGURATION = Release
 BUILD_LOG     = ./build.log
@@ -26,11 +26,11 @@ clean:
 
 .PHONY: schema
 schema:
-	curl -sSfLo Pulse/Github/schema.graphqls https://docs.github.com/public/fpt/schema.docs.graphql
+	curl -sSfLo Pullse/Github/schema.graphqls https://docs.github.com/public/fpt/schema.docs.graphql
 
 .PHONY: clean-generated
 clean-generated:
-	rm -rf Pulse/Github/{Github.graphql.swift,Operations,Schema}
+	rm -rf Pullse/Github/{Github.graphql.swift,Operations,Schema}
 
 .PHONY: generate
 generate: clean-generated

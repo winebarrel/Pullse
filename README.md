@@ -1,12 +1,12 @@
-# Pulse
+# Pullse
 
-[![CI](https://github.com/winebarrel/Pulse/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/Pulse/actions/workflows/ci.yml)
+[![CI](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml)
 
-Pulse is a utility app that notifies you of GitHub Pull Requests that have been approved or failed testing.
+Pullse is a utility app that notifies you of GitHub Pull Requests that have been approved or failed testing.
 
 ## Download
 
-https://github.com/winebarrel/Pulse/releases/latest
+https://github.com/winebarrel/Pullse/releases/latest
 
 ## Features
 

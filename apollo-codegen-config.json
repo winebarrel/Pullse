@@ -2,10 +2,10 @@
   "schemaNamespace": "Github",
   "input": {
     "operationSearchPaths": [
-      "Pulse/**/*.graphql"
+      "Pullse/**/*.graphql"
     ],
     "schemaSearchPaths": [
-      "Pulse/**/*.graphqls"
+      "Pullse/**/*.graphqls"
     ]
   },
   "output": {
@@ -13,10 +13,10 @@
       "none": {}
     },
     "schemaTypes": {
-      "path": "Pulse/Github",
+      "path": "Pullse/Github",
       "moduleType": {
         "embeddedInTarget": {
-          "name": "Pulse"
+          "name": "Pullse"
         }
       }
     },

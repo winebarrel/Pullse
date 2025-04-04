@@ -67,7 +67,7 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
       - name: Build and Analyse
         run: |
-          xcodebuild build analyze -scheme Pulse -destination 'generic/platform=macOS' -allowProvisioningUpdates -configuration Debug | tee build.log
+          xcodebuild build analyze -scheme Pullse -destination 'generic/platform=macOS' -allowProvisioningUpdates -configuration Debug | tee build.log
       - name: SwiftLint Analyse
         run: |
           ./swiftlint analyze --strict --compiler-log-path build.log
