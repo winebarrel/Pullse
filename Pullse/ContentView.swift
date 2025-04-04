@@ -53,6 +53,21 @@ struct ContentView: View {
                 .padding(.top, 5)
                 HStack {
                     Button {
+                        let pulls: PullRequests
+                        switch selection {
+                        case .settled:
+                            pulls = pullRequest.settled
+                        case .pending:
+                            pulls = pullRequest.pending
+                        }
+
+                        let list = pulls.map { $0.titleAndURL }
+                        Pasteboard.copy(list.joined(separator: "\n"))
+                    } label: {
+                        Image(systemName: "document.on.document")
+                    }.effectHoverCursor()
+
+                    Button {
                         Task {
                             let api = GitHubAPI(githubToken)
                             await pullRequest.update(api)
