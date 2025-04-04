@@ -12,44 +12,65 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            TabView(selection: $selection) {
-                ContentListView(
-                    pulls: pullRequest.settled,
-                    githubError: pullRequest.error
-                )
-                .tabItem {
-                    Text("Settled (\(pullRequest.settled.count))")
-                }
-                .tag(Tab.settled)
-                ContentListView(
-                    pulls: pullRequest.pending,
-                    githubError: pullRequest.error
-                )
-                .tabItem {
-                    Text("Pending (\(pullRequest.pending.count))")
-                }
-                .tag(Tab.pending)
-            }
-            .padding(.top, 5)
-            HStack {
-                Button {
-                    Task {
-                        let api = GitHubAPI(githubToken)
-                        await pullRequest.update(api)
+            if githubToken.isEmpty {
+                VStack {
+                    Spacer()
+                    Image(nsImage: NSImage(named: "AppIcon")!)
+                    Link(destination: URL(string: "https://github.com/winebarrel/Pullse#configuration")!) {
+                        Text("Set up your GotHub token.")
+                    }.effectHoverCursor()
+                    HStack {
+                        Spacer()
+                        SettingsLink {
+                            Image(systemName: "gearshape")
+                            Text("Settings")
+                        }.preActionButtonStyle {
+                            NSApp.activate(ignoringOtherApps: true)
+                        }
+                        Spacer()
                     }
-                } label: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                }.effectHoverCursor()
-
-                let label = if let updatedAt = pullRequest.updatedAt {
-                    updatedAt.shortTime()
-                } else {
-                    "-"
+                    Spacer()
                 }
+            } else {
+                TabView(selection: $selection) {
+                    ContentListView(
+                        pulls: pullRequest.settled,
+                        githubError: pullRequest.error
+                    )
+                    .tabItem {
+                        Text("Settled (\(pullRequest.settled.count))")
+                    }
+                    .tag(Tab.settled)
+                    ContentListView(
+                        pulls: pullRequest.pending,
+                        githubError: pullRequest.error
+                    )
+                    .tabItem {
+                        Text("Pending (\(pullRequest.pending.count))")
+                    }
+                    .tag(Tab.pending)
+                }
+                .padding(.top, 5)
+                HStack {
+                    Button {
+                        Task {
+                            let api = GitHubAPI(githubToken)
+                            await pullRequest.update(api)
+                        }
+                    } label: {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    }.effectHoverCursor()
 
-                Text(label)
+                    let label = if let updatedAt = pullRequest.updatedAt {
+                        updatedAt.shortTime()
+                    } else {
+                        "-"
+                    }
+
+                    Text(label)
+                }
+                .padding(.bottom, 5)
             }
-            .padding(.bottom, 5)
         }
         .background(.background)
     }
