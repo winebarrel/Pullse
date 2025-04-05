@@ -10,14 +10,14 @@ https://github.com/winebarrel/Pullse/releases/latest
 
 ## Features
 
-### Show pull requests in menu bar
+### Show pull requests from menu bar
 
-![](https://github.com/user-attachments/assets/1b7601ec-7820-454b-9165-63cc771e72b2)
-![](https://github.com/user-attachments/assets/8af168dd-30fd-4e57-8c75-1fd491bc60ad)
+![](https://github.com/user-attachments/assets/fb9891cb-6a08-4913-afbd-9b92f9dd6c35)
+![](https://github.com/user-attachments/assets/3c79c958-7af5-4f1f-a348-c77f6fec4b98)
 
 ### Notification of settled pull requests
 
-![](https://github.com/user-attachments/assets/db6a9167-c9ef-4874-a1cf-5380f1b02d17)
+![](https://github.com/user-attachments/assets/0a093f12-5b39-492c-b5f6-d6dc6e779f27)
 
 ### Status indication by menu bar icons
 
@@ -32,13 +32,14 @@ https://github.com/winebarrel/Pullse/releases/latest
 
 **Right-click menu** > **Settings**:
 
-![](https://github.com/user-attachments/assets/5f72bf13-71d7-481d-a657-35617ec13c2c)
-![](https://github.com/user-attachments/assets/ef9f0d74-6286-414c-9092-98af2d07182e)
+![](https://github.com/user-attachments/assets/f084d432-3038-46d8-8a0e-b009fd6b9398)
+![](https://github.com/user-attachments/assets/8977cdcf-4c27-4878-89b1-95dcc5330b81)
 
 | Field | Value |
 | - | - |
-| GitHub token | Token with repo scope.<br>Create from https://github.com/settings/tokens/new?scopes=repo |
-| Search query| Pull request search query.<br>See https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests |
+| GitHub token  | Token with repo scope.<br>Create from https://github.com/settings/tokens/new?scopes=repo |
+| Search query  | Pull request search query.<br>See https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests |
+| Interval (sec)| Pull request fetch interval. (second) |
 
 ### "OR" in query
 
