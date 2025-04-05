@@ -13,6 +13,7 @@ struct SettingView: View {
         Form {
             HStack {
                 SecureField("GitHub token", text: $githubToken).onChange(of: githubToken) {
+                    githubToken = githubToken.trimmingCharacters(in: .whitespacesAndNewlines)
                     Vault.githubToken = githubToken
                 }
                 Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
