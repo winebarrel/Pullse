@@ -1,5 +1,6 @@
 import ServiceManagement
 import SwiftUI
+import VersionCompare
 
 struct SettingView: View {
     @Binding var githubToken: String
@@ -7,6 +8,7 @@ struct SettingView: View {
     @AppStorage("githubQuery") private var githubQuery = Constants.defaultGithubQuery
     @State private var launchAtLogin: Bool = SMAppService.mainApp.status == .enabled
     @State private var githubTokenIsValid = true
+    @State private var showNewVersion = true
 
     private static let minInterval: Double = 1
     private static let maxInterval: Double = 14400
@@ -84,17 +86,42 @@ struct SettingView: View {
                         Logger.shared.error("failed to update 'Launch at login': \(error)")
                     }
                 }
-            Link(destination: URL(string: "https://github.com/winebarrel/Pullse")!) {
+
+            HStack {
+                if showNewVersion {
+                    Link(destination: URL(string: "https://apps.apple.com/app/pullse/id6744265414")!) {
+                        Text("[New version available]")
+                    }
+                    .effectHoverCursor()
+                }
+
                 // swiftlint:disable force_cast
                 let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
                 // swiftlint:enable force_cast
-                Text("Ver. \(appVer)")
+                Text("Version. \(appVer)")
             }
-            .effectHoverCursor()
+            .font(.footnote)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(20)
         .frame(width: 400)
+        .onAppear {
+            Task {
+                // swiftlint:disable force_cast
+                let bundleId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String
+                let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+                // swiftlint:enable force_cast
+
+                guard let info = await AppStoreAPI.getInfo(bundleId) else {
+                    return
+                }
+
+                let appStoreVersion = Version(info.version)!
+                let selfAppVersion = Version(appVer)!
+
+                showNewVersion = appStoreVersion > selfAppVersion
+            }
+        }
     }
 
     func onClosed(_ action: @escaping () -> Void) -> some View {

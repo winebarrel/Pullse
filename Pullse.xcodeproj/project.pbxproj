@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = AD5C7B662CE9D97C007D5B2C /* Apollo */; };
+		AD5F71742DA2E73500DF47E7 /* VersionCompare in Frameworks */ = {isa = PBXBuildFile; productRef = AD5F71732DA2E73500DF47E7 /* VersionCompare */; };
 		AD6515432CE9C73600BCC336 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515422CE9C73600BCC336 /* Valet */; };
 		AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */; };
 		AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515482CE9C76000BCC336 /* AsyncAlgorithms */; };
@@ -33,6 +34,7 @@
 				AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */,
 				AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */,
 				AD6515432CE9C73600BCC336 /* Valet in Frameworks */,
+				AD5F71742DA2E73500DF47E7 /* VersionCompare in Frameworks */,
 				AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +83,7 @@
 				AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */,
 				AD6515482CE9C76000BCC336 /* AsyncAlgorithms */,
 				AD5C7B662CE9D97C007D5B2C /* Apollo */,
+				AD5F71732DA2E73500DF47E7 /* VersionCompare */,
 			);
 			productName = Pullse;
 			productReference = AD1FD5302CE9BF0100508A20 /* Pullse.app */;
@@ -115,6 +118,7 @@
 				AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */,
 				AD6515442CE9C75100BCC336 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 				AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
+				AD5F71722DA2E73500DF47E7 /* XCRemoteSwiftPackageReference "swift-version-compare" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD1FD5312CE9BF0100508A20 /* Products */;
@@ -375,6 +379,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AD5F71722DA2E73500DF47E7 /* XCRemoteSwiftPackageReference "swift-version-compare" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mflknr/swift-version-compare.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
 		AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -414,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		AD5F71732DA2E73500DF47E7 /* VersionCompare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD5F71722DA2E73500DF47E7 /* XCRemoteSwiftPackageReference "swift-version-compare" */;
+			productName = VersionCompare;
 		};
 		AD6515422CE9C73600BCC336 /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;
