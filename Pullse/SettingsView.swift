@@ -29,9 +29,9 @@ struct SettingView: View {
                 }
 
                 if githubTokenIsValid {
-                    Text("􀆅").foregroundStyle(.green)
+                    Text(Image(systemName: "checkmark")).foregroundStyle(.green)
                 } else {
-                    Text("􀇾").foregroundStyle(.red)
+                    Text(Image(systemName: "exclamationmark.triangle")).foregroundStyle(.red)
                 }
             }
             Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
