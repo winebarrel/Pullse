@@ -90,6 +90,29 @@ actor GitHubAPI {
         client = ApolloClient(networkTransport: transport, store: store)
     }
 
+    static func ping(_ token: String) async -> Bool {
+        if token.isEmpty {
+            return false
+        }
+
+        var req = URLRequest(url: URL(string: "https://api.github.com/")!)
+        req.setValue("application/json", forHTTPHeaderField: "Accept")
+        req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        do {
+            let (_, rawResp) = try await URLSession.shared.data(for: req)
+
+            guard let resp = rawResp as? HTTPURLResponse else {
+                fatalError("failed to cast URLResponse to HTTPURLResponse")
+            }
+
+            return resp.statusCode == 200
+        } catch {
+            Logger.shared.error("GitHub API authorization request error: \(error)")
+            return false
+        }
+    }
+
     func fetch(_ queries: [String]) async throws -> PullRequests {
         try await withThrowingTaskGroup(of: PullRequests.self) { group in
             var allPullRequests: [String: PullRequest] = [:]

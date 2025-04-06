@@ -6,6 +6,8 @@ struct SettingView: View {
     @AppStorage("interval") private var interval = Constants.defaultInterval
     @AppStorage("githubQuery") private var githubQuery = Constants.defaultGithubQuery
     @State private var launchAtLogin: Bool = SMAppService.mainApp.status == .enabled
+    @State private var githubTokenIsValid = true
+
     private static let minInterval: Double = 1
     private static let maxInterval: Double = 14400
 
@@ -15,11 +17,26 @@ struct SettingView: View {
                 SecureField("GitHub token", text: $githubToken).onChange(of: githubToken) {
                     githubToken = githubToken.trimmingCharacters(in: .whitespacesAndNewlines)
                     Vault.githubToken = githubToken
+
+                    Task {
+                        githubTokenIsValid = await GitHubAPI.ping(self.githubToken)
+                    }
                 }
-                Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
-                    Image(systemName: "questionmark.circle")
-                }.effectHoverCursor()
+                .onAppear {
+                    Task {
+                        githubTokenIsValid = await GitHubAPI.ping(self.githubToken)
+                    }
+                }
+
+                if githubTokenIsValid {
+                    Text("􀆅").foregroundStyle(.green)
+                } else {
+                    Text("􀇾").foregroundStyle(.red)
+                }
             }
+            Link(destination: URL(string: "https://github.com/settings/tokens/new?scopes=repo")!) {
+                Text("Create a personal access token").font(.footnote)
+            }.effectHoverCursor()
             HStack {
                 TextField("Search query", text: $githubQuery, axis: .vertical)
                     .lineLimit(5...)
