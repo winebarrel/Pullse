@@ -28,7 +28,7 @@ enum AppStoreAPI {
 
             return info.results.first
         } catch {
-            Logger.shared.error("AppStore request error: \(error)")
+            Logger.shared.error("AppStore API request error: \(error)")
             return nil
         }
     }
