@@ -33,7 +33,7 @@ https://github.com/winebarrel/Pullse/releases/latest
 **Right-click menu** > **Settings**:
 
 ![](https://github.com/user-attachments/assets/d44de716-556b-4f0e-be98-0fa3287cf105)
-![](https://github.com/user-attachments/assets/8977cdcf-4c27-4878-89b1-95dcc5330b81)
+![](https://github.com/user-attachments/assets/db9b4c93-3c22-485a-beb7-118f6c73d674)
 
 | Field | Value |
 | - | - |
