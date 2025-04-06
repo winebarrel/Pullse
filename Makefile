@@ -35,3 +35,7 @@ clean-generated:
 .PHONY: generate
 generate: clean-generated
 	./apollo-ios-cli generate
+
+.PHONY: incr-ver
+incr-ver:
+	xcrun agvtool next-version
