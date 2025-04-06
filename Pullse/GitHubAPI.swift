@@ -47,12 +47,20 @@ struct PullRequest: Identifiable {
         case pending
     }
 
+    var titleWithDraft: String {
+        if draft {
+            "(Draft) \(title)"
+        } else {
+            title
+        }
+    }
+
     var titleAndURL: String {
-        "[\(owner)/\(repo) #\(number)] \(title)\n\(url)\n"
+        "[\(owner)/\(repo) #\(number)] \(titleWithDraft)\n\(url)\n"
     }
 
     var markdown: String {
-        "[[\(owner)/\(repo) #\(number)] \(title)](\(url))"
+        "[[\(owner)/\(repo) #\(number)] \(titleWithDraft)](\(url))"
     }
 }
 
