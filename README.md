@@ -1,6 +1,6 @@
-# Pullse
+# Pullse [![CI](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml)
 
-[![CI](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml/badge.svg)](https://github.com/winebarrel/Pullse/actions/workflows/ci.yml)
+[![](https://github.com/user-attachments/assets/e5fdb92f-a996-476f-8bb0-aa05c2b7d447)](https://apps.apple.com/app/pullse/id6744265414)
 
 Pullse is a utility app that notifies you of GitHub Pull Requests that have been approved or failed testing.
 
