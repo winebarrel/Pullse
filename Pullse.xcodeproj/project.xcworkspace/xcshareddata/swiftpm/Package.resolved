@@ -1,5 +1,5 @@
 {
-  "originHash" : "3e41ae5abca697e3ad3f8976f172d0812217a90ad0149e6e3b5fcdd679a29933",
+  "originHash" : "4c1df6a957679d1cbc7cf6dfe60e8af0b87918990b82a39f9a105c8ac097ef84",
   "pins" : [
     {
       "identity" : "apollo-ios",
@@ -44,6 +44,15 @@
       "state" : {
         "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
         "version" : "1.1.4"
+      }
+    },
+    {
+      "identity" : "swift-version-compare",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mflknr/swift-version-compare.git",
+      "state" : {
+        "revision" : "8d36d25a6c3299f5df81665e18a7025cadec9f80",
+        "version" : "2.0.3"
       }
     },
     {
