@@ -74,34 +74,38 @@ struct SettingView: View {
                 Image(systemName: "questionmark.circle") // for padding
                     .opacity(0.0)
             }
-            Toggle("Launch at login", isOn: $launchAtLogin)
-                .onChange(of: launchAtLogin) {
-                    do {
-                        if launchAtLogin {
-                            try SMAppService.mainApp.register()
-                        } else {
-                            try SMAppService.mainApp.unregister()
-                        }
-                    } catch {
-                        Logger.shared.error("failed to update 'Launch at login': \(error)")
-                    }
-                }
-
             HStack {
+                Toggle("Launch at login", isOn: $launchAtLogin)
+                    .onChange(of: launchAtLogin) {
+                        do {
+                            if launchAtLogin {
+                                try SMAppService.mainApp.register()
+                            } else {
+                                try SMAppService.mainApp.unregister()
+                            }
+                        } catch {
+                            Logger.shared.error("failed to update 'Launch at login': \(error)")
+                        }
+                    }
                 if showNewVersion {
                     Link(destination: URL(string: "https://apps.apple.com/app/pullse/id6744265414")!) {
-                        Text("[New version available]")
+                        Text("New version available")
+                            .font(.footnote)
+                            .padding(.horizontal, 3)
+                            .foregroundColor(.white)
+                            .background(.blue, in: RoundedRectangle(cornerRadius: 5))
                     }
                     .effectHoverCursor()
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-
-                // swiftlint:disable force_cast
-                let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-                // swiftlint:enable force_cast
-                Text("Version. \(appVer)")
             }
-            .font(.footnote)
-            .frame(maxWidth: .infinity, alignment: .trailing)
+
+            // swiftlint:disable force_cast
+            let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            // swiftlint:enable force_cast
+            Text("Version. \(appVer)")
+                .font(.footnote)
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(20)
         .frame(width: 400)
