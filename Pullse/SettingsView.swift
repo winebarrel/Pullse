@@ -100,12 +100,20 @@ struct SettingView: View {
                 }
             }
 
-            // swiftlint:disable force_cast
-            let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-            // swiftlint:enable force_cast
-            Text("Version. \(appVer)")
-                .font(.footnote)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            HStack {
+                // swiftlint:disable force_cast
+                let appVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+                // swiftlint:enable force_cast
+                Text("Version. \(appVer)")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Link(destination: URL(string: "https://github.com/winebarrel/Pullse")!) {
+                    Image("github-mark")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                }
+                .effectHoverCursor()
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(20)
         .frame(width: 400)
