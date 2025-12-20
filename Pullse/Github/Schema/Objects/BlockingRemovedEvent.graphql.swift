@@ -4,9 +4,9 @@
 import ApolloAPI
 
 extension Github.Objects {
-  /// An account to manage multiple organizations with consolidated policy and billing.
-  static let Enterprise = ApolloAPI.Object(
-    typename: "Enterprise",
+  /// Represents a 'blocking_removed' event on a given issue.
+  static let BlockingRemovedEvent = ApolloAPI.Object(
+    typename: "BlockingRemovedEvent",
     implementedInterfaces: [Github.Interfaces.Node.self],
     keyFields: nil
   )
