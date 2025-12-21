@@ -53,13 +53,13 @@ struct PullseApp: App {
         MenuBarExtra {
             RightClickMenuView()
         } label: {
-            Image(pullRequest.status.rawValue)
-        }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
-            if !initialized {
-                initialize()
-                initialized = true
+            Image(pullRequest.status.rawValue).onAppear {
+                if !initialized {
+                    initialize()
+                    initialized = true
+                }
             }
-
+        }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
             if let button = statusItem.button {
                 let mouseHandlerView = MouseHandlerView(frame: button.frame)
 
