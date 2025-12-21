@@ -2,9 +2,10 @@
 // This file was automatically generated and should not be edited.
 
 @_exported import ApolloAPI
+@_spi(Execution) @_spi(Unsafe) import ApolloAPI
 
 extension Github {
-  class SearchPullRequestsQuery: GraphQLQuery {
+  struct SearchPullRequestsQuery: GraphQLQuery {
     static let operationName: String = "SearchPullRequests"
     static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
@@ -17,7 +18,7 @@ extension Github {
       self.query = query
     }
 
-    public var __variables: Variables? { ["query": query] }
+    @_spi(Unsafe) public var __variables: Variables? { ["query": query] }
 
     struct Data: Github.SelectionSet {
       let __data: DataDict

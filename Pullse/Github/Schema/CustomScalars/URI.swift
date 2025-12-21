@@ -5,7 +5,7 @@
 // Any changes to this file will not be overwritten by future
 // code generation execution.
 
-import ApolloAPI
+@_spi(Internal) @_spi(Execution) import ApolloAPI
 
 extension Github {
   /// An RFC 3986, RFC 3987, and RFC 6570 (level 4) compliant URI string.
