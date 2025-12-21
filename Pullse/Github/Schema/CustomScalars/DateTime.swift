@@ -5,7 +5,7 @@
 // Any changes to this file will not be overwritten by future
 // code generation execution.
 
-import ApolloAPI
+@_spi(Internal) @_spi(Execution) import ApolloAPI
 
 extension Github {
   /// An ISO-8601 encoded UTC date string.

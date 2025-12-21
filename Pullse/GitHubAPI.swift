@@ -80,10 +80,11 @@ actor GitHubAPI {
     init(_ githubToken: String) {
         let cache = InMemoryNormalizedCache()
         let store = ApolloStore(cache: cache)
-        let provider = DefaultInterceptorProvider(store: store)
         let url = URL(string: "https://api.github.com/graphql")!
         let transport = RequestChainNetworkTransport(
-            interceptorProvider: provider,
+            urlSession: URLSession.shared,
+            interceptorProvider: DefaultInterceptorProvider.shared,
+            store: store,
             endpointURL: url,
             additionalHeaders: ["Authorization": "Bearer \(githubToken)"]
         )
@@ -134,94 +135,83 @@ actor GitHubAPI {
     }
 
     private func fetchFromQuery(_ githubQuery: String) async throws -> PullRequests {
-        try await withCheckedThrowingContinuation { continuation in
+        do {
             let query = Github.SearchPullRequestsQuery(query: githubQuery)
+            let reqConf = RequestConfiguration(writeResultsToCache: false)
+            let result = try await client.fetch(query: query, cachePolicy: .networkOnly, requestConfiguration: reqConf)
+            var pulls: PullRequests = []
 
-            client.fetch(query: query, cachePolicy: .fetchIgnoringCacheCompletely) { result in
-                switch result {
-                case .success(let value):
-                    var pulls: PullRequests = []
-
-                    value.data?.search.nodes?.forEach { body in
-                        guard let asPull = body?.asPullRequest else {
-                            return
-                        }
-
-                        guard let commit = asPull.commits.nodes?.first??.commit else {
-                            return
-                        }
-
-                        let reviewDecision = asPull.reviewDecision
-
-                        let reviewResult: PullRequest.ReviewResult = if reviewDecision == nil || reviewDecision == .approved {
-                            .success
-                        } else if reviewDecision == .changesRequested {
-                            .failure
-                        } else {
-                            .pending
-                        }
-
-                        let state = commit.statusCheckRollup?.state
-
-                        let checkResult: PullRequest.CheckResult = if state == .success {
-                            .success
-                        } else if state == .failure || state == .error {
-                            .failure
-                        } else {
-                            // NOTE: If status check is not set, it will be pending
-                            .pending
-                        }
-
-                        let comment = asPull.comments.edges?.first??.node
-                        let review = asPull.reviews?.edges?.first??.node
-
-                        let latestUrl = if let comment, let review {
-                            if comment.createdAt > review.createdAt {
-                                comment.url
-                            } else {
-                                review.url
-                            }
-                        } else if let comment {
-                            comment.url
-                        } else if let review {
-                            review.url
-                        } else {
-                            asPull.url
-                        }
-
-                        let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
-
-                        let pull = PullRequest(
-                            owner: asPull.repository.owner.login,
-                            repo: asPull.repository.name,
-                            title: asPull.title,
-                            url: asPull.url,
-                            latestUrl: latestUrl,
-                            mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
-                            commitUrl: commit.url,
-                            draft: asPull.isDraft,
-                            approvedCount: asPull.approvedReviews?.totalCount ?? 0,
-                            reviewResult: reviewResult,
-                            checkResult: checkResult,
-                            updatedAt: updatedAt,
-                            number: asPull.number
-                        )
-
-                        pulls.append(pull)
-                    }
-
-                    continuation.resume(returning: pulls)
-                case .failure(let err):
-                    if let err = err as? Apollo.ResponseCodeInterceptor.ResponseCodeError,
-                       case .invalidResponseCode(let respOrNil, _) = err,
-                       let resp = respOrNil
-                    {
-                        continuation.resume(throwing: GitHubError.respNotOK(resp))
-                    } else {
-                        continuation.resume(throwing: err)
-                    }
+            result.data?.search.nodes?.forEach { body in
+                guard let asPull = body?.asPullRequest else {
+                    return
                 }
+
+                guard let commit = asPull.commits.nodes?.first??.commit else {
+                    return
+                }
+
+                let reviewDecision = asPull.reviewDecision
+
+                let reviewResult: PullRequest.ReviewResult = if reviewDecision == nil || reviewDecision == .approved {
+                    .success
+                } else if reviewDecision == .changesRequested {
+                    .failure
+                } else {
+                    .pending
+                }
+
+                let state = commit.statusCheckRollup?.state
+
+                let checkResult: PullRequest.CheckResult = if state == .success {
+                    .success
+                } else if state == .failure || state == .error {
+                    .failure
+                } else {
+                    // NOTE: If status check is not set, it will be pending
+                    .pending
+                }
+
+                let comment = asPull.comments.edges?.first??.node
+                let review = asPull.reviews?.edges?.first??.node
+
+                let latestUrl = if let comment, let review {
+                    if comment.createdAt > review.createdAt {
+                        comment.url
+                    } else {
+                        review.url
+                    }
+                } else if let comment {
+                    comment.url
+                } else if let review {
+                    review.url
+                } else {
+                    asPull.url
+                }
+
+                let updatedAt = ISO8601DateFormatter().date(from: asPull.updatedAt) ?? Date(timeIntervalSince1970: 0)
+
+                let pull = PullRequest(
+                    owner: asPull.repository.owner.login,
+                    repo: asPull.repository.name,
+                    title: asPull.title,
+                    url: asPull.url,
+                    latestUrl: latestUrl,
+                    mergeable: asPull.mergeable.value ?? Github.MergeableState.unknown,
+                    commitUrl: commit.url,
+                    draft: asPull.isDraft,
+                    approvedCount: asPull.approvedReviews?.totalCount ?? 0,
+                    reviewResult: reviewResult,
+                    checkResult: checkResult,
+                    updatedAt: updatedAt,
+                    number: asPull.number
+                )
+
+                pulls.append(pull)
             }
+
+            return pulls
+        } catch let err as Apollo.ResponseCodeInterceptor.ResponseCodeError {
+            throw GitHubError.respNotOK(err.response)
         }
     }
 }

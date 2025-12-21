@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = AD5C7B662CE9D97C007D5B2C /* Apollo */; };
 		AD5F71742DA2E73500DF47E7 /* VersionCompare in Frameworks */ = {isa = PBXBuildFile; productRef = AD5F71732DA2E73500DF47E7 /* VersionCompare */; };
 		AD6515432CE9C73600BCC336 /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515422CE9C73600BCC336 /* Valet */; };
 		AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */; };
 		AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */ = {isa = PBXBuildFile; productRef = AD6515482CE9C76000BCC336 /* AsyncAlgorithms */; };
+		ADDFFF702EF79C4100685891 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = ADDFFF6F2EF79C4100685891 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDFFF702EF79C4100685891 /* Apollo in Frameworks */,
 				AD6515462CE9C75100BCC336 /* MenuBarExtraAccess in Frameworks */,
-				AD5C7B672CE9D97C007D5B2C /* Apollo in Frameworks */,
 				AD6515432CE9C73600BCC336 /* Valet in Frameworks */,
 				AD5F71742DA2E73500DF47E7 /* VersionCompare in Frameworks */,
 				AD6515492CE9C76000BCC336 /* AsyncAlgorithms in Frameworks */,
@@ -82,8 +82,8 @@
 				AD6515422CE9C73600BCC336 /* Valet */,
 				AD6515452CE9C75100BCC336 /* MenuBarExtraAccess */,
 				AD6515482CE9C76000BCC336 /* AsyncAlgorithms */,
-				AD5C7B662CE9D97C007D5B2C /* Apollo */,
 				AD5F71732DA2E73500DF47E7 /* VersionCompare */,
+				ADDFFF6F2EF79C4100685891 /* Apollo */,
 			);
 			productName = Pullse;
 			productReference = AD1FD5302CE9BF0100508A20 /* Pullse.app */;
@@ -114,11 +114,11 @@
 			mainGroup = AD1FD5272CE9BF0100508A20;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */,
 				AD6515442CE9C75100BCC336 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 				AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */,
 				AD5F71722DA2E73500DF47E7 /* XCRemoteSwiftPackageReference "swift-version-compare" */,
+				ADDFFF6E2EF79C4100685891 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AD1FD5312CE9BF0100508A20 /* Products */;
@@ -395,14 +395,6 @@
 				minimumVersion = 2.0.3;
 			};
 		};
-		AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.15.3;
-			};
-		};
 		AD6515412CE9C73600BCC336 /* XCRemoteSwiftPackageReference "Valet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/square/Valet.git";
@@ -427,14 +419,17 @@
 				minimumVersion = 1.0.2;
 			};
 		};
+		ADDFFF6E2EF79C4100685891 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AD5C7B662CE9D97C007D5B2C /* Apollo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AD6515402CE9C71D00BCC336 /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = Apollo;
-		};
 		AD5F71732DA2E73500DF47E7 /* VersionCompare */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD5F71722DA2E73500DF47E7 /* XCRemoteSwiftPackageReference "swift-version-compare" */;
@@ -454,6 +449,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD6515472CE9C76000BCC336 /* XCRemoteSwiftPackageReference "swift-async-algorithms" */;
 			productName = AsyncAlgorithms;
+		};
+		ADDFFF6F2EF79C4100685891 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADDFFF6E2EF79C4100685891 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
