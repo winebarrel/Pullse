@@ -9,7 +9,6 @@ extension Github.Objects {
     typename: "Organization",
     implementedInterfaces: [
       Github.Interfaces.Actor.self,
-      Github.Interfaces.AnnouncementBannerI.self,
       Github.Interfaces.MemberStatusable.self,
       Github.Interfaces.Node.self,
       Github.Interfaces.PackageOwner.self,

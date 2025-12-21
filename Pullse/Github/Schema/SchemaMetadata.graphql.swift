@@ -31,6 +31,7 @@ extension Github {
       switch typename {
       case "AddedToMergeQueueEvent": return Github.Objects.AddedToMergeQueueEvent
       case "AddedToProjectEvent": return Github.Objects.AddedToProjectEvent
+      case "AddedToProjectV2Event": return Github.Objects.AddedToProjectV2Event
       case "App": return Github.Objects.App
       case "AssignedEvent": return Github.Objects.AssignedEvent
       case "AutoMergeDisabledEvent": return Github.Objects.AutoMergeDisabledEvent
@@ -43,6 +44,10 @@ extension Github {
       case "BaseRefDeletedEvent": return Github.Objects.BaseRefDeletedEvent
       case "BaseRefForcePushedEvent": return Github.Objects.BaseRefForcePushedEvent
       case "Blob": return Github.Objects.Blob
+      case "BlockedByAddedEvent": return Github.Objects.BlockedByAddedEvent
+      case "BlockedByRemovedEvent": return Github.Objects.BlockedByRemovedEvent
+      case "BlockingAddedEvent": return Github.Objects.BlockingAddedEvent
+      case "BlockingRemovedEvent": return Github.Objects.BlockingRemovedEvent
       case "Bot": return Github.Objects.Bot
       case "BranchProtectionRule": return Github.Objects.BranchProtectionRule
       case "BypassForcePushAllowance": return Github.Objects.BypassForcePushAllowance
@@ -59,6 +64,7 @@ extension Github {
       case "Comparison": return Github.Objects.Comparison
       case "ConnectedEvent": return Github.Objects.ConnectedEvent
       case "ConvertToDraftEvent": return Github.Objects.ConvertToDraftEvent
+      case "ConvertedFromDraftEvent": return Github.Objects.ConvertedFromDraftEvent
       case "ConvertedNoteToIssueEvent": return Github.Objects.ConvertedNoteToIssueEvent
       case "ConvertedToDiscussionEvent": return Github.Objects.ConvertedToDiscussionEvent
       case "CrossReferencedEvent": return Github.Objects.CrossReferencedEvent
@@ -186,6 +192,7 @@ extension Github {
       case "ProjectV2ItemFieldNumberValue": return Github.Objects.ProjectV2ItemFieldNumberValue
       case "ProjectV2ItemFieldSingleSelectValue": return Github.Objects.ProjectV2ItemFieldSingleSelectValue
       case "ProjectV2ItemFieldTextValue": return Github.Objects.ProjectV2ItemFieldTextValue
+      case "ProjectV2ItemStatusChangedEvent": return Github.Objects.ProjectV2ItemStatusChangedEvent
       case "ProjectV2IterationField": return Github.Objects.ProjectV2IterationField
       case "ProjectV2SingleSelectField": return Github.Objects.ProjectV2SingleSelectField
       case "ProjectV2StatusUpdate": return Github.Objects.ProjectV2StatusUpdate
@@ -213,6 +220,7 @@ extension Github {
       case "ReleaseAsset": return Github.Objects.ReleaseAsset
       case "RemovedFromMergeQueueEvent": return Github.Objects.RemovedFromMergeQueueEvent
       case "RemovedFromProjectEvent": return Github.Objects.RemovedFromProjectEvent
+      case "RemovedFromProjectV2Event": return Github.Objects.RemovedFromProjectV2Event
       case "RenamedTitleEvent": return Github.Objects.RenamedTitleEvent
       case "ReopenedEvent": return Github.Objects.ReopenedEvent
       case "RepoAccessAuditEntry": return Github.Objects.RepoAccessAuditEntry
@@ -235,6 +243,7 @@ extension Github {
       case "RepoRemoveMemberAuditEntry": return Github.Objects.RepoRemoveMemberAuditEntry
       case "RepoRemoveTopicAuditEntry": return Github.Objects.RepoRemoveTopicAuditEntry
       case "Repository": return Github.Objects.Repository
+      case "RepositoryCustomProperty": return Github.Objects.RepositoryCustomProperty
       case "RepositoryInvitation": return Github.Objects.RepositoryInvitation
       case "RepositoryMigration": return Github.Objects.RepositoryMigration
       case "RepositoryRule": return Github.Objects.RepositoryRule

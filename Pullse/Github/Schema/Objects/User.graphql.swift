@@ -9,6 +9,7 @@ extension Github.Objects {
     typename: "User",
     implementedInterfaces: [
       Github.Interfaces.Actor.self,
+      Github.Interfaces.Agentic.self,
       Github.Interfaces.Node.self,
       Github.Interfaces.PackageOwner.self,
       Github.Interfaces.ProfileOwner.self,

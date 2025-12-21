@@ -31,6 +31,9 @@ extension Github {
           "query": .variable("query")
         ]),
       ] }
+      static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+        SearchPullRequestsQuery.Data.self
+      ] }
 
       /// Perform a search across resources, returning a maximum of 1,000 results.
       var search: Search { __data["search"] }
@@ -47,6 +50,9 @@ extension Github {
           .field("__typename", String.self),
           .field("nodes", [Node?]?.self),
         ] }
+        static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+          SearchPullRequestsQuery.Data.Search.self
+        ] }
 
         /// A list of nodes.
         var nodes: [Node?]? { __data["nodes"] }
@@ -62,6 +68,9 @@ extension Github {
           static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .inlineFragment(AsPullRequest.self),
+          ] }
+          static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+            SearchPullRequestsQuery.Data.Search.Node.self
           ] }
 
           var asPullRequest: AsPullRequest? { _asInlineFragment() }
@@ -88,6 +97,10 @@ extension Github {
               .field("reviews", Reviews?.self, arguments: ["last": 1]),
               .field("commits", Commits.self, arguments: ["last": 1]),
               .field("reviews", alias: "approvedReviews", ApprovedReviews?.self, arguments: ["states": "APPROVED"]),
+            ] }
+            static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+              SearchPullRequestsQuery.Data.Search.Node.self,
+              SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.self
             ] }
 
             /// The repository associated with this node.
@@ -128,6 +141,9 @@ extension Github {
                 .field("name", String.self),
                 .field("owner", Owner.self),
               ] }
+              static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Repository.self
+              ] }
 
               /// The name of the repository.
               var name: String { __data["name"] }
@@ -145,6 +161,9 @@ extension Github {
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
                   .field("login", String.self),
+                ] }
+                static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                  SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Repository.Owner.self
                 ] }
 
                 /// The username used to login.
@@ -164,6 +183,9 @@ extension Github {
                 .field("__typename", String.self),
                 .field("edges", [Edge?]?.self),
               ] }
+              static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Comments.self
+              ] }
 
               /// A list of edges.
               var edges: [Edge?]? { __data["edges"] }
@@ -179,6 +201,9 @@ extension Github {
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
                   .field("node", Node?.self),
+                ] }
+                static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                  SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Comments.Edge.self
                 ] }
 
                 /// The item at the end of the edge.
@@ -196,6 +221,9 @@ extension Github {
                     .field("__typename", String.self),
                     .field("url", Github.URI.self),
                     .field("createdAt", Github.DateTime.self),
+                  ] }
+                  static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                    SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Comments.Edge.Node.self
                   ] }
 
                   /// The HTTP URL for this issue comment
@@ -218,6 +246,9 @@ extension Github {
                 .field("__typename", String.self),
                 .field("edges", [Edge?]?.self),
               ] }
+              static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Reviews.self
+              ] }
 
               /// A list of edges.
               var edges: [Edge?]? { __data["edges"] }
@@ -233,6 +264,9 @@ extension Github {
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
                   .field("node", Node?.self),
+                ] }
+                static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                  SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Reviews.Edge.self
                 ] }
 
                 /// The item at the end of the edge.
@@ -250,6 +284,9 @@ extension Github {
                     .field("__typename", String.self),
                     .field("url", Github.URI.self),
                     .field("createdAt", Github.DateTime.self),
+                  ] }
+                  static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                    SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Reviews.Edge.Node.self
                   ] }
 
                   /// The HTTP URL permalink for this PullRequestReview.
@@ -272,6 +309,9 @@ extension Github {
                 .field("__typename", String.self),
                 .field("nodes", [Node?]?.self),
               ] }
+              static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Commits.self
+              ] }
 
               /// A list of nodes.
               var nodes: [Node?]? { __data["nodes"] }
@@ -287,6 +327,9 @@ extension Github {
                 static var __selections: [ApolloAPI.Selection] { [
                   .field("__typename", String.self),
                   .field("commit", Commit.self),
+                ] }
+                static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                  SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Commits.Node.self
                 ] }
 
                 /// The Git commit object
@@ -305,6 +348,9 @@ extension Github {
                     .field("url", Github.URI.self),
                     .field("statusCheckRollup", StatusCheckRollup?.self),
                   ] }
+                  static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                    SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Commits.Node.Commit.self
+                  ] }
 
                   /// The HTTP URL for this commit
                   var url: Github.URI { __data["url"] }
@@ -322,6 +368,9 @@ extension Github {
                     static var __selections: [ApolloAPI.Selection] { [
                       .field("__typename", String.self),
                       .field("state", GraphQLEnum<Github.StatusState>.self),
+                    ] }
+                    static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                      SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.Commits.Node.Commit.StatusCheckRollup.self
                     ] }
 
                     /// The combined status for the commit.
@@ -342,6 +391,9 @@ extension Github {
               static var __selections: [ApolloAPI.Selection] { [
                 .field("__typename", String.self),
                 .field("totalCount", Int.self),
+              ] }
+              static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                SearchPullRequestsQuery.Data.Search.Node.AsPullRequest.ApprovedReviews.self
               ] }
 
               /// Identifies the total count of items in the connection.

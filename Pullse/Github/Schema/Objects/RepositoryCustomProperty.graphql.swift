@@ -4,9 +4,9 @@
 import ApolloAPI
 
 extension Github.Objects {
-  /// An account to manage multiple organizations with consolidated policy and billing.
-  static let Enterprise = ApolloAPI.Object(
-    typename: "Enterprise",
+  /// A repository custom property.
+  static let RepositoryCustomProperty = ApolloAPI.Object(
+    typename: "RepositoryCustomProperty",
     implementedInterfaces: [Github.Interfaces.Node.self],
     keyFields: nil
   )
