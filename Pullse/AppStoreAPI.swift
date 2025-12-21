@@ -5,7 +5,6 @@ struct AppStoreRespResult: Codable {
 }
 
 struct AppStoreResp: Codable {
-    var resultCount: Int
     var results: [AppStoreRespResult]
 }
 
