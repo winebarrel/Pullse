@@ -135,7 +135,6 @@ actor GitHubAPI {
     }
 
     private func fetchFromQuery(_ githubQuery: String) async throws -> PullRequests {
-        //        try await withCheckedThrowingContinuation { continuation in
         let query = Github.SearchPullRequestsQuery(query: githubQuery)
         let reqConf = RequestConfiguration(writeResultsToCache: false)
         let result = try await client.fetch(query: query, cachePolicy: .networkOnly, requestConfiguration: reqConf)
