@@ -24,11 +24,54 @@ struct PullseApp: App {
         return pop
     }()
 
+    private static let mouseHandlerRetryCount = 100
+    private static let mouseHandlerRetryInterval: TimeInterval = 0.2
+
     private func initialize() {
         let contentView = ContentView(pullRequest: pullRequest, githubToken: $githubToken)
         popover.contentViewController = NSHostingController(rootView: contentView)
 
+        installMouseHandler()
         scheduleUpdate()
+    }
+
+    // NOTE: MenuBarExtraAccess hands over the status item only once, within two
+    // seconds of launch, and never retries if it fails to find it in time. Keep
+    // looking so that a slow launch does not leave the popover unreachable for
+    // the rest of the session.
+    private func installMouseHandler() {
+        Task {
+            for _ in 0 ..< PullseApp.mouseHandlerRetryCount {
+                if let button = StatusItemButton.find() {
+                    attachMouseHandler(to: button)
+                    return
+                }
+
+                try? await Task.sleep(for: .seconds(PullseApp.mouseHandlerRetryInterval))
+            }
+
+            Logger.shared.error("status item button not found: left click will not open the popover")
+        }
+    }
+
+    private func attachMouseHandler(to button: NSStatusBarButton) {
+        guard !button.subviews.contains(where: { $0 is MouseHandlerView }) else {
+            return
+        }
+
+        let mouseHandlerView = MouseHandlerView(frame: button.bounds)
+        mouseHandlerView.autoresizingMask = [.width, .height]
+
+        mouseHandlerView.onMouseDown = {
+            if self.popover.isShown {
+                self.popover.performClose(nil)
+            } else {
+                self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
+                self.popover.contentViewController?.view.window?.makeKey()
+            }
+        }
+
+        button.addSubview(mouseHandlerView)
     }
 
     private func scheduleUpdate() {
@@ -61,18 +104,7 @@ struct PullseApp: App {
             }
         }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
             if let button = statusItem.button {
-                let mouseHandlerView = MouseHandlerView(frame: button.frame)
-
-                mouseHandlerView.onMouseDown = {
-                    if popover.isShown {
-                        popover.performClose(nil)
-                    } else {
-                        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
-                        popover.contentViewController?.view.window?.makeKey()
-                    }
-                }
-
-                button.addSubview(mouseHandlerView)
+                attachMouseHandler(to: button)
             }
         }
         Settings {
