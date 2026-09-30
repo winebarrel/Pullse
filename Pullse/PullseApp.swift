@@ -7,6 +7,7 @@ struct PullseApp: App {
     @State private var initialized = false
     @State private var isMenuPresented = false
     @State private var timer: Task<Void, Never>?
+    @State private var clickHandler: StatusItemClickHandler?
     // NOTE: Define "githubToken" in PullseApp so that values are not lost during sleep.
     @State private var githubToken = Vault.githubToken
     @AppStorage("interval") private var interval = Constants.defaultInterval
@@ -60,20 +61,19 @@ struct PullseApp: App {
                 }
             }
         }.menuBarExtraAccess(isPresented: $isMenuPresented) { statusItem in
-            if let button = statusItem.button {
-                let mouseHandlerView = MouseHandlerView(frame: button.frame)
+            guard clickHandler == nil, let button = statusItem.button else { return }
+            let handler = StatusItemClickHandler(statusItem: statusItem)
 
-                mouseHandlerView.onMouseDown = {
-                    if popover.isShown {
-                        popover.performClose(nil)
-                    } else {
-                        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
-                        popover.contentViewController?.view.window?.makeKey()
-                    }
+            handler.onLeftClick = {
+                if popover.isShown {
+                    popover.performClose(nil)
+                } else {
+                    popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.maxY)
+                    popover.contentViewController?.view.window?.makeKey()
                 }
-
-                button.addSubview(mouseHandlerView)
             }
+
+            clickHandler = handler
         }
         Settings {
             SettingView(githubToken: $githubToken)
