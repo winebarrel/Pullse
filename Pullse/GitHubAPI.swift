@@ -107,7 +107,6 @@ actor GitHubAPI {
                 fatalError("failed to cast URLResponse to HTTPURLResponse")
             }
 
-            print(resp)
             return resp.statusCode == 200
         } catch {
             Logger.shared.error("GitHub API authorization request error: \(error)")
