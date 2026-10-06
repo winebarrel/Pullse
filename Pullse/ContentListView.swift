@@ -53,10 +53,6 @@ struct ContentListView: View {
                         Text(pull.title)
                             .multilineTextAlignment(.leading)
                             .underline(hoverId == pull.id)
-                            .onHover { hovering in
-                                hoverId = hovering ? pull.id : ""
-                            }
-                            .effectHoverCursor()
                         Text("(\(pull.updatedAt.relative()))").font(.caption2).foregroundStyle(Color.primary)
                         if pull.checkResult == .success {
                             Image(systemName: "checklist.checked")
@@ -71,6 +67,12 @@ struct ContentListView: View {
                             .foregroundColor(.primary)
                         }
                     }
+                    // NOTE: Since macOS 27, onHover inside a Link label is never called,
+                    // so handle hover on the Link itself.
+                    .onHover { hovering in
+                        hoverId = hovering ? pull.id : ""
+                    }
+                    .effectHoverCursor()
                 }
                 .contextMenu {
                     Button("Copy Title and URL") {
