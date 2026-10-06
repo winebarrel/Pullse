@@ -17,7 +17,7 @@ struct ContentView: View {
                     Spacer()
                     Image(nsImage: NSImage(named: "AppIcon")!)
                     Link(destination: URL(string: "https://github.com/winebarrel/Pullse#configuration")!) {
-                        Text("Set up your GotHub token.")
+                        Text("Set up your GitHub token.")
                     }.effectHoverCursor()
                     HStack {
                         Spacer()
